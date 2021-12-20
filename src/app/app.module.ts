@@ -26,3 +26,7 @@ const routes: Routes =[
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+//TODO: lazy loading???
+//TODO: guards
