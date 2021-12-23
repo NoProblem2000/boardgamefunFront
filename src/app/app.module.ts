@@ -6,22 +6,27 @@ import { HeaderComponent } from './layout/header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {AppRoutesModule} from "./app-routes.module";
 import {RouterModule} from "@angular/router";
+import {MainPageComponent} from "./layout/main/main-page.component";
+import {HttpClientModule} from "@angular/common/http";
+import {authInterceptorProviders} from "./shared/interceptors/auth.service";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutesModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
@@ -29,3 +34,4 @@ export class AppModule { }
 
 //TODO: lazy loading???
 //TODO: guards
+//todo: tsconfig path
