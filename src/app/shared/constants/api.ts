@@ -4,6 +4,7 @@ export const api = {
   SignIn: 'sign-in',
   Users: 'users',
   Games: 'games',
+  GameById: 'get-game',
   Diaries: 'diaries',
   Forums: 'forum'
 };
