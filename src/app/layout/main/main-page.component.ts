@@ -5,6 +5,7 @@ import {DiaryService} from "../../shared/services/diary.service";
 import {ForumService} from "../../shared/services/forum.service";
 import {DiariesWithRatingsProjection, ForumProjection, GameDTO, User} from "../../shared/interfaces/rest";
 import {catchError, forkJoin, Observable, of} from "rxjs";
+import {NgxUiLoaderService} from "ngx-ui-loader";
 
 @Component({
   selector: 'app-main-page',
@@ -21,15 +22,18 @@ export class MainPageComponent implements OnInit {
   constructor(private userService: UserService,
               private gameService: GameService,
               private diaryService: DiaryService,
-              private forumService: ForumService) {
+              private forumService: ForumService,
+              private loaderService: NgxUiLoaderService) {
   }
 
   ngOnInit(): void {
+    this.loaderService.startLoader('main-page');
     this.initData().subscribe(([Users, Games, Diaries, Forums]) => {
         this.users = Users;
         this.games = Games;
         this.diaries = Diaries;
         this.forums = Forums;
+        this.loaderService.stopLoader('main-page');
       },
       (error) => console.log(error));
   }

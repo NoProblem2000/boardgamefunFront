@@ -9,6 +9,8 @@ import {RouterModule} from "@angular/router";
 import {MainPageComponent} from "./layout/main/main-page.component";
 import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./shared/interceptors/auth.service";
+import {NgxUiLoaderModule} from "ngx-ui-loader";
+import {ngxUiLoaderConfig} from "./config";
 
 
 
@@ -24,7 +26,8 @@ import {authInterceptorProviders} from "./shared/interceptors/auth.service";
     BrowserAnimationsModule,
     MatToolbarModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
