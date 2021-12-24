@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
 import {GameService} from "../../shared/services/game.service";
+import {DiaryService} from "../../shared/services/diary.service";
 
 @Component({
   selector: 'app-main-page',
@@ -10,7 +11,8 @@ import {GameService} from "../../shared/services/game.service";
 export class MainPageComponent implements OnInit {
 
   constructor(private userService: UserService,
-              private gameService: GameService) { }
+              private gameService: GameService,
+              private diaryService: DiaryService) { }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((res) => {
@@ -19,6 +21,11 @@ export class MainPageComponent implements OnInit {
     });
 
     this.gameService.getGames().subscribe((res) => {
+      console.log(res)
+    }, (err) => { console.log(err);
+    });
+
+    this.diaryService.getDiaries().subscribe((res) => {
       console.log(res)
     }, (err) => { console.log(err);
     });

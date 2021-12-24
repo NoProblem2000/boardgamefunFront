@@ -6,5 +6,6 @@ export const api = {
   Games: 'games',
   GameById: 'get-game',
   Diaries: 'diaries',
-  Forums: 'forum'
+  Forums: 'forum',
+  Diary: 'diaries'
 };
