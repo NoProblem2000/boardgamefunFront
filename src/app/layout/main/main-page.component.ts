@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../shared/services/user.service";
 import {GameService} from "../../shared/services/game.service";
 import {DiaryService} from "../../shared/services/diary.service";
 import {ForumService} from "../../shared/services/forum.service";
+import {DiariesWithRatingsProjection, ForumProjection, GameDTO, User} from "../../shared/interfaces/rest";
+import {catchError, forkJoin, Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-main-page',
@@ -11,32 +13,32 @@ import {ForumService} from "../../shared/services/forum.service";
 })
 export class MainPageComponent implements OnInit {
 
+  public users: User[] = [];
+  public games: GameDTO[] = [];
+  public diaries: DiariesWithRatingsProjection[] = [];
+  public forums: ForumProjection[] = [];
+
   constructor(private userService: UserService,
               private gameService: GameService,
               private diaryService: DiaryService,
-              private forumService: ForumService) { }
+              private forumService: ForumService) {
+  }
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((res) => {
-      console.log(res)
-    }, (err) => { console.log(err);
-    });
+    this.initData().subscribe(([Users, Games, Diaries, Forums]) => {
+        this.users = Users;
+        this.games = Games;
+        this.diaries = Diaries;
+        this.forums = Forums;
+      },
+      (error) => console.log(error));
+  }
 
-    this.gameService.getGames().subscribe((res) => {
-      console.log(res)
-    }, (err) => { console.log(err);
-    });
-
-    this.diaryService.getDiaries().subscribe((res) => {
-      console.log(res)
-    }, (err) => { console.log(err);
-    });
-
-    this.forumService.getForums().subscribe((res) => {
-      console.log(res)
-    }, (err) => { console.log(err);
-    });
-
+  private initData(): Observable<any> {
+    return forkJoin([this.userService.getUsers().pipe(catchError(err => of(err))),
+      this.gameService.getGames().pipe(catchError(err => of(err))),
+      this.diaryService.getDiaries().pipe(catchError(err => of(err))),
+      this.forumService.getForums().pipe(catchError(err => of(err)))])
   }
 
 }
