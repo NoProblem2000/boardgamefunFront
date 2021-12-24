@@ -1,5 +1,21 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span>HEADER</span>
-  </mat-toolbar-row>
+<mat-toolbar color="primary">
+  <button mat-button>Домой</button>
+  <span class="spacer"></span>
+  <button mat-button>Вход</button>
+  <button mat-button>Зарегистрироваться</button>
+  <mat-form-field appearance="fill" class="game-filter-form-field">
+    <mat-label>Поиск</mat-label>
+    <input type="text"
+      placeholder="Введите название игры"
+           matInput
+           [matAutocomplete]="autoComplete">
+    <mat-autocomplete #autoComplete = "matAutocomplete">
+      <!-- <mat-option *ngFor="let game of filteredGames | async" [value]="title">
+         {{title}}
+       </mat-option>-->
+      <mat-option>
+        test!
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </mat-toolbar>

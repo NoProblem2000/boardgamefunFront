@@ -11,6 +11,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./shared/interceptors/auth.service";
 import {NgxUiLoaderModule} from "ngx-ui-loader";
 import {ngxUiLoaderConfig} from "./config";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -27,7 +31,11 @@ import {ngxUiLoaderConfig} from "./config";
     MatToolbarModule,
     RouterModule,
     HttpClientModule,
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatButtonModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
