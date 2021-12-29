@@ -3,7 +3,7 @@
     BoardgameFun</button>
   <span class="spacer"></span>
   <button *ngIf="!authService.isLoggedIn" mat-button routerLink="/authentication">Вход</button>
-  <button *ngIf="authService.isLoggedIn" mat-button>Выход</button>
+  <button *ngIf="authService.isLoggedIn" mat-button (click)="signOut()">Выход</button>
   <button *ngIf="!authService.isLoggedIn" mat-button>Зарегистрироваться</button>
   <mat-form-field appearance="fill" class="game-filter-form-field">
     <mat-label>Поиск</mat-label>
