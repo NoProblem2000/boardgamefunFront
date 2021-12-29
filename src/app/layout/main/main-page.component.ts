@@ -14,8 +14,9 @@ import {NgxUiLoaderService} from "ngx-ui-loader";
 })
 export class MainPageComponent implements OnInit {
 
+  public img: any;
   public users: User[] = [];
-  public games: GameDTO[] = [];
+  public gamesData: GameDTO[] = [];
   public diaries: DiariesWithRatingsProjection[] = [];
   public forums: ForumProjection[] = [];
 
@@ -30,7 +31,7 @@ export class MainPageComponent implements OnInit {
     this.loaderService.startLoader('main-page');
     this.initData().subscribe(([Users, Games, Diaries, Forums]) => {
         this.users = Users;
-        this.games = Games;
+        this.gamesData = Games;
         this.diaries = Diaries;
         this.forums = Forums;
         this.loaderService.stopLoader('main-page');
@@ -43,6 +44,10 @@ export class MainPageComponent implements OnInit {
       this.gameService.getGames().pipe(catchError(err => of(err))),
       this.diaryService.getDiaries().pipe(catchError(err => of(err))),
       this.forumService.getForums().pipe(catchError(err => of(err)))])
+  }
+
+  blobToImage(blob: any): string{
+    return 'data:image/jpeg;base64,' + blob;
   }
 
 }
