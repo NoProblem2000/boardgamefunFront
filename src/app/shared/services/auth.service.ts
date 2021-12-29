@@ -13,18 +13,20 @@ const httpOptions = {
 })
 export class AuthService {
 
+  isLoggedIn = false;
+
   constructor(private http: HttpClient) { }
 
-  signIn(username: string, password: string): Observable<any> {
-    return this.http.post(api.Gateway + api.Users + api.SignIn, {
-      username,
+  signIn(name: string, password: string): Observable<any> {
+    return this.http.post(api.Gateway + '/' + api.Users + '/' + api.SignIn, {
+      name,
       password
     }, httpOptions);
   }
 
-  signUp(username: string, email: string, password: string): Observable<any> {
+  signUp(name: string, email: string, password: string): Observable<any> {
     return this.http.post(api.Gateway + api.Users + api.SignUp, {
-      username,
+      name,
       email,
       password
     }, httpOptions);

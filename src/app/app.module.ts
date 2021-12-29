@@ -10,7 +10,7 @@ import {MainPageComponent} from "./layout/main/main-page.component";
 import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./shared/interceptors/auth.service";
 import {NgxUiLoaderModule} from "ngx-ui-loader";
-import {ngxUiLoaderConfig} from "./config";
+import {ngxUiLoaderConfig, notifierOptions} from "./config";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
@@ -19,6 +19,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {FlexModule} from "@angular/flex-layout";
+import {NotifierModule} from "angular-notifier";
 
 
 
@@ -43,7 +44,10 @@ import {FlexModule} from "@angular/flex-layout";
     MatTabsModule,
     MatCardModule,
     MatIconModule,
-    FlexModule
+    FlexModule,
+    NotifierModule.withConfig({
+      ...notifierOptions
+    }),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

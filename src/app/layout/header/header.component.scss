@@ -1,8 +1,14 @@
-.spacer{
+.spacer {
   flex: 1 1 auto;
 }
-.game-filter-form-field{
+
+.game-filter-form-field {
   width: 20%;
   margin-top: 5px;
 }
 
+.logo {
+  min-width: 58px;
+  max-width: 58px;
+  cursor: pointer;
+}
