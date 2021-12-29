@@ -1,22 +1,74 @@
 <div class="main-page-body">
-  <mat-tab-group headerPosition="below">
-    <mat-tab label="Новые">
-      <!--todo: request on server-->
-      <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="center stretch">
-        <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of gamesData">
-          <mat-card fxLayout="column" fxLayoutAlign="center center">
-            <img mat-card-lg-image [src]=blobToImage(data.game.picture)>
-            <mat-card-content>{{data.game.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
-              <mat-icon>star</mat-icon></span>
-            </mat-card-content>
-          </mat-card>
+  <!--todo:union component for cards-->
+  <!--todo: right requests on server-->
+  <div class="main-page-block">
+    <h1>Игры</h1>
+    <mat-tab-group headerPosition="below">
+      <mat-tab label="Новые">
+        <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="center stretch">
+          <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of gamesData">
+            <mat-card fxLayout="column" fxLayoutAlign="center center">
+              <img mat-card-lg-image [src]=blobToImage(data.game.picture)>
+              <mat-card-content>{{data.game.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
+                <mat-icon>star</mat-icon></span>
+              </mat-card-content>
+            </mat-card>
+          </div>
         </div>
+      </mat-tab>
+      <mat-tab label="Обсуждаемые">
+        WIP
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="main-page-block">
+    <h1>Новости</h1>
+    wip
+  </div>
+
+  <div class="main-page-block">
+    <h1>Дневники</h1>
+    <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
+      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of diaries">
+        <mat-card fxLayout="column" fxLayoutAlign="center center">
+          <img mat-card-lg-image src="/assets/icons/diary.png">
+          <mat-card-content>{{data.diary.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
+            <mat-icon>star</mat-icon></span>
+          </mat-card-content>
+        </mat-card>
       </div>
-    </mat-tab>
-    <mat-tab label="Обсуждаемые">
-      <!--todo: request on server-->
-      WIP
-    </mat-tab>
-  </mat-tab-group>
+    </div>
+  </div>
+
+  <div class="main-page-block">
+    <h1>Самые обсуждаемые форумы</h1>
+    <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
+      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of forums">
+        <mat-card fxLayout="column" fxLayoutAlign="center center">
+          <img mat-card-lg-image src="/assets/icons/forum.png">
+          <mat-card-content>{{data.forum.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
+            <mat-icon>star</mat-icon></span>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-page-block">
+    <h1>Новые пользователи</h1>
+    <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
+      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of users">
+        <mat-card fxLayout="column" fxLayoutAlign="center center">
+          <img mat-card-lg-image src="/assets/icons/user.png">
+          <mat-card-content>{{data.name}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
+            <mat-icon>star</mat-icon></span>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+
   <ngx-ui-loader [loaderId]="'main-page'"></ngx-ui-loader>
 </div>
