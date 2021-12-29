@@ -57,6 +57,7 @@ export class AuthComponent implements OnInit {
     this.loaderService.startLoader('authentication-page');
     this.authService.signIn(this.username, this.password).subscribe(
       data => {
+        this.loaderService.stopLoader('authentication-page');
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.authService.isLoggedIn = true;
@@ -64,6 +65,7 @@ export class AuthComponent implements OnInit {
         this.router.navigateByUrl("");
       },
       err => {
+        this.loaderService.stopLoader('authentication-page');
         this.notifier.notify("error", 'Ошибка в процессе авторизации')
       }
     );
