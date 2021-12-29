@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
-  <button mat-button routerLink=""><img src="assets/icons/dice.png" class="logo" >
-    BoardgameFun</button>
+  <button mat-button routerLink=""><img src="assets/icons/dice.png" class="logo">
+    BoardgameFun
+  </button>
   <span class="spacer"></span>
   <button *ngIf="!authService.isLoggedIn" mat-button routerLink="/authentication">Вход</button>
   <button *ngIf="authService.isLoggedIn" mat-button (click)="signOut()">Выход</button>
@@ -8,10 +9,10 @@
   <mat-form-field appearance="fill" class="game-filter-form-field">
     <mat-label>Поиск</mat-label>
     <input type="text"
-      placeholder="Введите название игры"
+           placeholder="Введите название игры"
            matInput
            [matAutocomplete]="autoComplete">
-    <mat-autocomplete #autoComplete = "matAutocomplete">
+    <mat-autocomplete #autoComplete="matAutocomplete">
       <!-- <mat-option *ngFor="let game of filteredGames | async" [value]="title">
          {{title}}
        </mat-option>-->
@@ -21,3 +22,4 @@
     </mat-autocomplete>
   </mat-form-field>
 </mat-toolbar>
+
