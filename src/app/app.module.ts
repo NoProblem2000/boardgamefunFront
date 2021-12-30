@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './layout/header/header.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HeaderComponent} from './layout/header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {AppRoutesModule} from "./app-routes.module";
 import {RouterModule} from "@angular/router";
@@ -20,7 +20,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {FlexModule} from "@angular/flex-layout";
 import {NotifierModule} from "angular-notifier";
-
+import {AuthService} from "./shared/services/auth.service";
 
 
 @NgModule({
@@ -49,10 +49,12 @@ import {NotifierModule} from "angular-notifier";
       ...notifierOptions
     }),
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,
+    AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
 
 //TODO: lazy loading???

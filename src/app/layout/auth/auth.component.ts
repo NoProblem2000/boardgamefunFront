@@ -33,10 +33,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
-      this.authService.isLoggedIn = true;
-    }
-
     this.loginForm = new FormGroup({
       username: new FormControl(this.username, [Validators.required]),
       password: new FormControl(this.password, [Validators.required])

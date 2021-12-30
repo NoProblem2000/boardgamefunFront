@@ -1,0 +1,36 @@
+@import "src/custom-theme";
+ul{
+  list-style: none;
+  li{
+    cursor: pointer;
+    &.active{
+      background-color: mat-color($boardgamefunFront-accent);
+      color: mat-color($boardgamefunFront-primary);
+      border-radius: 2px 2px 2px 2px;
+    }
+  }
+}
+.dropdown_menu {
+  position: absolute;
+  top: 64px;
+  z-index: 150;
+  width: 250px;
+  background-color: mat-color($boardgamefunFront-primary);
+  border-radius: 0 0 5px 5px;
+  user-select: none;
+  overflow: hidden;
+  padding-left: 0;
+
+  li {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 5px 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+
+  }
+
+}
+

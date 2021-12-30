@@ -22,7 +22,6 @@
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
     "angular-notifier": "^9.1.0",
-    "ng-matero": "^12.5.0",
     "ngx-ui-loader": "^11.0.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

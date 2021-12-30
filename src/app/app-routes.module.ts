@@ -8,6 +8,8 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {NgxUiLoaderModule} from "ngx-ui-loader";
+import { UserMenuComponent } from './layout/header/user-menu/user-menu.component';
+import {MatIconModule} from "@angular/material/icon";
 
 const routes: Routes =[
   {
@@ -22,7 +24,11 @@ const routes: Routes =[
 
 @NgModule({
   declarations: [
-    AuthComponent],
+    AuthComponent,
+    UserMenuComponent],
+  exports: [
+    UserMenuComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
@@ -31,6 +37,8 @@ const routes: Routes =[
     ReactiveFormsModule,
     MatButtonModule,
     NgxUiLoaderModule,
+    MatIconModule,
   ]
 })
-export class AppRoutesModule { }
+
+export class AppRoutesModule {}
