@@ -58,10 +58,10 @@
   <div class="main-page-block">
     <h1>Новые пользователи</h1>
     <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
-      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of users">
+      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let userData of users">
         <mat-card fxLayout="column" fxLayoutAlign="center center">
           <img mat-card-lg-image src="/assets/icons/user.png">
-          <mat-card-content>{{data.name}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
+          <mat-card-content> {{userData.user.name}} <span class="game-rating" *ngIf="userData.user.rating">{{userData.user.rating}}
             <mat-icon>star</mat-icon></span>
           </mat-card-content>
         </mat-card>

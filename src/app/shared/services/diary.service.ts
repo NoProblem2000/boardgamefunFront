@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpGlobalService} from "./http-global.service";
 import {Observable} from "rxjs";
-import {DiariesWithRatingsProjection} from "../interfaces/rest";
+import {DiaryDTO} from "../interfaces/rest";
 import {api} from "../constants/api";
 
 @Injectable({
@@ -11,12 +11,12 @@ export class DiaryService {
 
   constructor(private http: HttpGlobalService) { }
 
-  public getDiaries(): Observable<DiariesWithRatingsProjection[]>{
+  public getDiaries(): Observable<DiaryDTO[]>{
     const url = `${api.Diary}`;
     return this.http.get(url);
   }
 
-  public getDiary(id: number): Observable<DiariesWithRatingsProjection>{
+  public getDiary(id: number): Observable<DiaryDTO>{
     const url = `${api.Diary}/${id}`;
     return this.http.get(url);
   }
