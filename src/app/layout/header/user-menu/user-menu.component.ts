@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../shared/services/auth.service";
 import {TokenStorageService} from "../../../shared/services/token-storage.service";
 import {Router} from "@angular/router";
@@ -28,14 +28,16 @@ export class UserMenuComponent implements OnInit {
   name: string;
   avatar: any;
   isUserMenuOpen = false;
+
   constructor(public authService: AuthService,
               private tokenStorage: TokenStorageService,
               private router: Router,
               private userService: UserService) {
     this.name = tokenStorage.getUser().userName;
-    this.userService.getUser(tokenStorage.getUser().id).subscribe(res =>{
-      this.avatar = res.user.avatar;
-    })
+    if (tokenStorage.getUser()?.id)
+      this.userService.getUser(tokenStorage.getUser().id).subscribe(res => {
+        this.avatar = res.user.avatar;
+      })
   }
 
   ngOnInit(): void {
@@ -44,7 +46,7 @@ export class UserMenuComponent implements OnInit {
     }
   }
 
-  signOut(): void{
+  signOut(): void {
     this.toggleUserMenu();
     this.tokenStorage.signOut()
     this.authService.isLoggedIn = false;
@@ -54,11 +56,11 @@ export class UserMenuComponent implements OnInit {
     this.router.navigate([currentUrl]);
   }
 
-  toggleUserMenu(): void{
+  toggleUserMenu(): void {
     this.isUserMenuOpen = !this.isUserMenuOpen;
   }
 
-  blobToImage(blob: any): string{
+  blobToImage(blob: any): string {
     return 'data:image/jpeg;base64,' + blob;
   }
 
