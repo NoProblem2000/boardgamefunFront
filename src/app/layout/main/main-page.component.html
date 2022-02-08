@@ -60,7 +60,8 @@
     <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
       <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let userData of users">
         <mat-card fxLayout="column" fxLayoutAlign="center center">
-          <img mat-card-lg-image src="/assets/icons/user.png">
+          <img *ngIf="userData.user.avatar; else defaultUserImage" mat-card-lg-image
+               [src]=blobToImage(userData.user.avatar)>
           <mat-card-content> {{userData.user.name}} <span class="game-rating" *ngIf="userData.user.rating">{{userData.user.rating}}
             <mat-icon>star</mat-icon></span>
           </mat-card-content>
@@ -68,7 +69,9 @@
       </div>
     </div>
   </div>
-
-
   <ngx-ui-loader [loaderId]="'main-page'"></ngx-ui-loader>
 </div>
+
+<ng-template #defaultUserImage>
+  <img mat-card-lg-image src="/assets/icons/user.png">
+</ng-template>
