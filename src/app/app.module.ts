@@ -21,6 +21,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {FlexModule} from "@angular/flex-layout";
 import {NotifierModule} from "angular-notifier";
 import {AuthService} from "./shared/services/auth.service";
+import {ErrorInterceptorProviders} from "./shared/interceptors/error-interceptor.service";
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {AuthService} from "./shared/services/auth.service";
     }),
   ],
   providers: [authInterceptorProviders,
+    ErrorInterceptorProviders,
     AuthService],
   bootstrap: [AppComponent]
 })

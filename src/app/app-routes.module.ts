@@ -15,6 +15,10 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
 
 const routes: Routes =[
   {
+    path: 'error',
+    loadChildren: () => import ('./error-pages/error-page.module').then(module => module.ErrorPageModule)
+  },
+  {
     path: '',
     component: MainPageComponent
   },
