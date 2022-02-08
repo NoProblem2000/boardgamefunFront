@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpGlobalService} from "./http-global.service";
 import {Observable} from "rxjs";
-import {User} from "../interfaces/rest";
+import {User, UserDTO} from "../interfaces/rest";
 import {api} from "../constants/api";
 
 @Injectable({
@@ -16,7 +16,7 @@ export class UserService {
     return this.httpService.get(url);
   }
 
-  public getUser(id: number): Observable<User>{
+  public getUser(id: number): Observable<UserDTO>{
     const url = `${api.Users}/${id}`;
     return this.httpService.get(url);
   }

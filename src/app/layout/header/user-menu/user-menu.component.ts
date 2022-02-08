@@ -3,6 +3,7 @@ import {AuthService} from "../../../shared/services/auth.service";
 import {TokenStorageService} from "../../../shared/services/token-storage.service";
 import {Router} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {UserService} from "../../../shared/services/user.service";
 
 @Component({
   selector: 'app-user-menu',
@@ -25,11 +26,16 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 export class UserMenuComponent implements OnInit {
 
   name: string;
+  avatar: any;
   isUserMenuOpen = false;
   constructor(public authService: AuthService,
               private tokenStorage: TokenStorageService,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
     this.name = tokenStorage.getUser().userName;
+    this.userService.getUser(tokenStorage.getUser().id).subscribe(res =>{
+      this.avatar = res.user.avatar;
+    })
   }
 
   ngOnInit(): void {
@@ -50,6 +56,10 @@ export class UserMenuComponent implements OnInit {
 
   toggleUserMenu(): void{
     this.isUserMenuOpen = !this.isUserMenuOpen;
+  }
+
+  blobToImage(blob: any): string{
+    return 'data:image/jpeg;base64,' + blob;
   }
 
 }

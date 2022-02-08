@@ -94,9 +94,4 @@ export class RegistrationComponent implements OnInit {
         this.notifier.notify("error", 'Ошибка в процессе регистрации')
       });
   }
-
-  onImageUpload(): void {
-
-  }
-
 }
