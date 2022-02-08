@@ -76,21 +76,21 @@ export class RegistrationComponent implements OnInit {
 
   signUp(): void {
     //wrap in transaction two post query or make another gui - for example two windows, one for personal data, one for avatar
-    this.loaderService.startLoader('registration-page');
+
     this.authService.signUp(this.username, this.password, this.mail, this.town).subscribe(
       res => {
         this.userService.uploadAvatar(this.avatar, this.username).subscribe(res => {
-            this.loaderService.stopLoader('registration-page');
+            this.loaderService.stopLoader('app-body');
             this.notifier.notify("success", 'Регистрация прошла успешно');
             this.router.navigateByUrl("/authentication");
           },
           error => {
-            this.loaderService.stopLoader('registration-page');
+            this.loaderService.stopLoader('app-body');
             this.notifier.notify("error", 'Ошибка в процессе загрузки аватара')
           });
       },
       error => {
-        this.loaderService.stopLoader('registration-page');
+        this.loaderService.stopLoader('app-body');
         this.notifier.notify("error", 'Ошибка в процессе регистрации')
       });
   }
