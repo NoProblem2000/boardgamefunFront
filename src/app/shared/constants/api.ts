@@ -7,5 +7,6 @@ export const api = {
   GameById: 'get-game',
   Diaries: 'diaries',
   Forums: 'forum',
-  Diary: 'diaries'
+  Diary: 'diaries',
+  Avatar: 'upload-avatar'
 };

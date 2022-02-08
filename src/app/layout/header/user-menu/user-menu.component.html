@@ -1,6 +1,6 @@
 <div *ngIf="!authService.isLoggedIn">
   <button mat-button routerLink="/authentication">Вход</button>
-  <button mat-button>Зарегистрироваться</button>
+  <button mat-button routerLink="/registration">Зарегистрироваться</button>
 </div>
 <div *ngIf="authService.isLoggedIn">
   <ul>

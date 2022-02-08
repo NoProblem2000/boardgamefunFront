@@ -21,4 +21,9 @@ export class UserService {
     return this.httpService.get(url);
   }
 
+  public uploadAvatar(avatar: any, username: string){
+    const url = `${api.Users}/${api.Avatar}/${username}`;
+    return this.httpService.insert(url, avatar);
+  }
+
 }

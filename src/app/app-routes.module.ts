@@ -10,6 +10,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {NgxUiLoaderModule} from "ngx-ui-loader";
 import { UserMenuComponent } from './layout/header/user-menu/user-menu.component';
 import {MatIconModule} from "@angular/material/icon";
+import { RegistrationComponent } from './layout/registration/registration.component';
+import {MaterialFileInputModule} from "ngx-material-file-input";
 
 const routes: Routes =[
   {
@@ -19,25 +21,31 @@ const routes: Routes =[
   {
     path: 'authentication',
     component: AuthComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent
   }
 ]
 
 @NgModule({
   declarations: [
     AuthComponent,
-    UserMenuComponent],
+    UserMenuComponent,
+    RegistrationComponent],
   exports: [
     UserMenuComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule.forRoot(routes),
     MatFormFieldModule,
     MatInputModule,
+    CommonModule,
+    RouterModule.forRoot(routes),
     ReactiveFormsModule,
     MatButtonModule,
     NgxUiLoaderModule,
     MatIconModule,
+    MaterialFileInputModule,
   ]
 })
 

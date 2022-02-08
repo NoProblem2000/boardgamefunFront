@@ -1,0 +1,54 @@
+<div class="registration">
+  <form [formGroup]="registrationForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Введите логин..."
+             formControlName="username"
+             required
+             [ngClass]="{
+                  'is-invalid': (getUsername?.dirty || getUsername?.touched) && getUsername?.errors,
+                  'is-valid': (getUsername?.dirty || getUsername?.touched) && !getUsername?.errors}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             type="password"
+             class="form-control"
+             placeholder="Введите пароль..."
+             formControlName="password"
+             required
+             [ngClass]="{
+                  'is-invalid': (getPassword?.dirty || getPassword?.touched) && getPassword?.errors,
+                  'is-valid': (getPassword?.dirty || getPassword?.touched) && !getPassword?.errors}">
+    </mat-form-field>
+    <mat-form-field>
+    <input matInput
+           type="text"
+           class="form-control"
+           placeholder="Введите электронную почту..."
+           formControlName="mail"
+           required
+           [ngClass]="{
+                  'is-invalid': (getMail?.dirty || getMail?.touched) && getMail?.errors,
+                  'is-valid': (getMail?.dirty || getMail?.touched) && !getMail?.errors}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Введите город..."
+             formControlName="town">
+    </mat-form-field>
+    <mat-form-field>
+      <ngx-mat-file-input formControlName="avatar" placeholder="Загрузить аватар" [accept]="'.jpg'" ></ngx-mat-file-input>
+    </mat-form-field>
+    <button mat-raised-button
+            color="accent"
+            class="enter-btn successButton"
+            type="submit">
+      Зарегистрироваться
+    </button>
+  </form>
+  <ngx-ui-loader [loaderId]="'registration-page'"></ngx-ui-loader>
+</div>

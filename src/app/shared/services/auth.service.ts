@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {api} from "../constants/api";
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 
@@ -15,7 +15,8 @@ export class AuthService {
 
   isLoggedIn = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   signIn(name: string, password: string): Observable<any> {
     return this.http.post(api.Gateway + '/' + api.Users + '/' + api.SignIn, {
@@ -24,11 +25,12 @@ export class AuthService {
     }, httpOptions);
   }
 
-  signUp(name: string, email: string, password: string): Observable<any> {
-    return this.http.post(api.Gateway + api.Users + api.SignUp, {
+  signUp(name: string, password: string, mail: string, town: string): Observable<any> {
+    return this.http.post(api.Gateway + '/' + api.Users + '/' + api.SignUp, {
       name,
-      email,
-      password
+      password,
+      mail,
+      town
     }, httpOptions);
   }
 
