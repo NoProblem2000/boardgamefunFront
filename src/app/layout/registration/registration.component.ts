@@ -6,13 +6,15 @@ import {TokenStorageService} from "../../shared/services/token-storage.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
 import {UserService} from "../../shared/services/user.service";
+import {ComponentCanDeactivate} from "../../shared/guards/save-data.guard";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, ComponentCanDeactivate {
 
   registrationForm!: FormGroup;
   username!: string;
@@ -93,5 +95,13 @@ export class RegistrationComponent implements OnInit {
         this.loaderService.stopLoader('app-body');
         this.notifier.notify("error", 'Ошибка в процессе регистрации')
       });
+  }
+
+  canDeactivate(): boolean | Observable<boolean> {
+    if (this.getUsername?.value || this.getPassword?.value || this.getMail?.value || this.getTown?.value) {
+      return confirm("Вы точно уверены, что хотите покинуть страницу? Все данные будут утеряны!")
+    } else {
+      return true;
+    }
   }
 }

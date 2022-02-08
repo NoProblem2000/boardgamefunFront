@@ -12,6 +12,7 @@ import { UserMenuComponent } from './layout/header/user-menu/user-menu.component
 import {MatIconModule} from "@angular/material/icon";
 import { RegistrationComponent } from './layout/registration/registration.component';
 import {MaterialFileInputModule} from "ngx-material-file-input";
+import {SaveDataGuard} from "./shared/guards/save-data.guard";
 
 const routes: Routes =[
   {
@@ -28,7 +29,8 @@ const routes: Routes =[
   },
   {
     path: 'registration',
-    component: RegistrationComponent
+    component: RegistrationComponent,
+    canDeactivate: [SaveDataGuard]
   }
 ]
 
@@ -50,7 +52,8 @@ const routes: Routes =[
     NgxUiLoaderModule,
     MatIconModule,
     MaterialFileInputModule,
-  ]
+  ],
+  providers:[SaveDataGuard]
 })
 
 export class AppRoutesModule {}
