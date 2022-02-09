@@ -54,7 +54,7 @@ export class AuthComponent implements OnInit {
     this.authService.signIn(this.username, this.password).subscribe(
       data => {
         this.loaderService.stopLoader('authentication-page');
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
         this.authService.isLoggedIn = true;
         this.notifier.notify("success", 'Авторизация прошла успешно');
