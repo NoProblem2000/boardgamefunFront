@@ -1,20 +1,10 @@
 <div class="main-page-body">
-  <!--todo:union component for cards-->
   <!--todo: right requests on server-->
   <div class="main-page-block">
     <h1>Игры</h1>
     <mat-tab-group headerPosition="below">
       <mat-tab label="Новые">
-        <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="center stretch">
-          <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of gamesData">
-            <mat-card fxLayout="column" fxLayoutAlign="center center" routerLink="/game/{{data.game.id}}">
-              <img mat-card-lg-image [src]=convertImage(data.game.picture)>
-              <mat-card-content>{{data.game.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
-                <mat-icon>star</mat-icon></span>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </div>
+        <app-games-cards [gamesData]="gamesData"></app-games-cards>
       </mat-tab>
       <mat-tab label="Обсуждаемые">
         WIP
@@ -29,49 +19,19 @@
 
   <div class="main-page-block">
     <h1>Дневники</h1>
-    <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
-      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of diaries">
-        <mat-card fxLayout="column" fxLayoutAlign="center center">
-          <img mat-card-lg-image src="/assets/icons/diary.png">
-          <mat-card-content>{{data.diary.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
-            <mat-icon>star</mat-icon></span>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
+    <app-diary-cards [diaries]="diaries"></app-diary-cards>
   </div>
 
   <div class="main-page-block">
     <h1>Самые обсуждаемые форумы</h1>
-    <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
-      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of forums">
-        <mat-card fxLayout="column" fxLayoutAlign="center center">
-          <img mat-card-lg-image src="/assets/icons/forum.png">
-          <mat-card-content>{{data.forum.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
-            <mat-icon>star</mat-icon></span>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
+    <app-forums-cards [forums]="forums"></app-forums-cards>
   </div>
 
   <div class="main-page-block">
     <h1>Новые пользователи</h1>
-    <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
-      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let userData of users">
-        <mat-card fxLayout="column" fxLayoutAlign="center center">
-          <img *ngIf="userData.user.avatar; else defaultUserImage" mat-card-lg-image
-               [src]=convertImage(userData.user.avatar)>
-          <mat-card-content> {{userData.user.name}} <span class="game-rating" *ngIf="userData.user.rating">{{userData.user.rating}}
-            <mat-icon>star</mat-icon></span>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
+    <app-users-cards [users]="users"></app-users-cards>
   </div>
   <ngx-ui-loader [loaderId]="'main-page'"></ngx-ui-loader>
 </div>
 
-<ng-template #defaultUserImage>
-  <img mat-card-lg-image src="/assets/icons/user.png">
-</ng-template>
+

@@ -13,6 +13,12 @@ import {MatIconModule} from "@angular/material/icon";
 import { RegistrationComponent } from './layout/registration/registration.component';
 import {MaterialFileInputModule} from "ngx-material-file-input";
 import {SaveDataGuard} from "./shared/guards/save-data.guard";
+import { GamesCardsComponent } from './shared/component/mat-cards/games-cards/games-cards.component';
+import {MatCardModule} from "@angular/material/card";
+import {FlexModule} from "@angular/flex-layout";
+import { DiaryCardsComponent } from './shared/component/mat-cards/diary-cards/diary-cards.component';
+import { ForumsCardsComponent } from './shared/component/mat-cards/forums-cards/forums-cards.component';
+import { UsersCardsComponent } from './shared/component/mat-cards/users-cards/users-cards.component';
 
 const routes: Routes =[
   {
@@ -42,9 +48,17 @@ const routes: Routes =[
   declarations: [
     AuthComponent,
     UserMenuComponent,
-    RegistrationComponent],
+    RegistrationComponent,
+    GamesCardsComponent,
+    DiaryCardsComponent,
+    ForumsCardsComponent,
+    UsersCardsComponent],
   exports: [
-    UserMenuComponent
+    UserMenuComponent,
+    GamesCardsComponent,
+    DiaryCardsComponent,
+    ForumsCardsComponent,
+    UsersCardsComponent
   ],
   imports: [
     MatFormFieldModule,
@@ -56,6 +70,8 @@ const routes: Routes =[
     NgxUiLoaderModule,
     MatIconModule,
     MaterialFileInputModule,
+    MatCardModule,
+    FlexModule,
   ],
   providers:[SaveDataGuard]
 })
