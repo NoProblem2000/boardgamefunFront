@@ -4,6 +4,7 @@ import {TokenStorageService} from "../../../shared/services/token-storage.servic
 import {Router} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {UserService} from "../../../shared/services/user.service";
+import {blobToImage} from "../../../shared/functions/image-operations";
 
 @Component({
   selector: 'app-user-menu',
@@ -60,8 +61,8 @@ export class UserMenuComponent implements OnInit {
     this.isUserMenuOpen = !this.isUserMenuOpen;
   }
 
-  blobToImage(blob: any): string {
-    return 'data:image/jpeg;base64,' + blob;
+  convertImage(blob: any): string {
+    return blobToImage(blob)
   }
 
 }

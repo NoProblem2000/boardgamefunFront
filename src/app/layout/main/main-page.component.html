@@ -7,8 +7,8 @@
       <mat-tab label="Новые">
         <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="center stretch">
           <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of gamesData">
-            <mat-card fxLayout="column" fxLayoutAlign="center center">
-              <img mat-card-lg-image [src]=blobToImage(data.game.picture)>
+            <mat-card fxLayout="column" fxLayoutAlign="center center" routerLink="/game/{{data.game.id}}">
+              <img mat-card-lg-image [src]=convertImage(data.game.picture)>
               <mat-card-content>{{data.game.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
                 <mat-icon>star</mat-icon></span>
               </mat-card-content>
@@ -61,7 +61,7 @@
       <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let userData of users">
         <mat-card fxLayout="column" fxLayoutAlign="center center">
           <img *ngIf="userData.user.avatar; else defaultUserImage" mat-card-lg-image
-               [src]=blobToImage(userData.user.avatar)>
+               [src]=convertImage(userData.user.avatar)>
           <mat-card-content> {{userData.user.name}} <span class="game-rating" *ngIf="userData.user.rating">{{userData.user.rating}}
             <mat-icon>star</mat-icon></span>
           </mat-card-content>

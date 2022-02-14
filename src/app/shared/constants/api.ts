@@ -4,6 +4,8 @@ export const api = {
   SignIn: 'sign-in',
   Users: 'users',
   Games: 'games',
+  SimilarGames: 'similar',
+  Expansions: 'expansions',
   GameById: 'get-game',
   Diaries: 'diaries',
   Forums: 'forum',

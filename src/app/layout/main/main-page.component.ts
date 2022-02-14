@@ -6,6 +6,7 @@ import {ForumService} from "../../shared/services/forum.service";
 import {DiaryDTO, ForumDTO, GameDTO, User, UserDTO} from "../../shared/interfaces/rest";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {NgxUiLoaderService} from "ngx-ui-loader";
+import {blobToImage} from "../../shared/functions/image-operations";
 
 @Component({
   selector: 'app-main-page',
@@ -14,11 +15,11 @@ import {NgxUiLoaderService} from "ngx-ui-loader";
 })
 export class MainPageComponent implements OnInit {
 
-  public img: any;
   public users: UserDTO[] = [];
   public gamesData: GameDTO[] = [];
   public diaries: DiaryDTO[] = [];
   public forums: ForumDTO[] = [];
+
   constructor(private userService: UserService,
               private gameService: GameService,
               private diaryService: DiaryService,
@@ -35,7 +36,10 @@ export class MainPageComponent implements OnInit {
         this.forums = Forums;
         this.loaderService.stopLoader('main-page');
       },
-      (error) => console.log(error));
+      (error) => {
+        this.loaderService.stopLoader('main-page');
+        console.log(error)
+      });
   }
 
   private initData(): Observable<any> {
@@ -45,8 +49,8 @@ export class MainPageComponent implements OnInit {
       this.forumService.getForums().pipe(catchError(err => of(err)))])
   }
 
-  blobToImage(blob: any): string{
-    return 'data:image/jpeg;base64,' + blob;
+  convertImage(blob: any): string {
+    return blobToImage(blob);
   }
 
 }

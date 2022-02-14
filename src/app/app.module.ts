@@ -61,4 +61,5 @@ export class AppModule {
 
 //TODO: lazy loading???
 //todo: tsconfig path
+//todo: store?
 

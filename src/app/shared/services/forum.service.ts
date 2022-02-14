@@ -16,6 +16,11 @@ export class ForumService {
     return this.http.get(url);
   }
 
+  public getForumsByGame(gameId: number): Observable<ForumDTO[]>{
+    const url = `${api.Forums}?gameId=${gameId}`;
+    return this.http.get(url);
+  }
+
   public getForum(id: number): Observable<ForumDTO>{
     const url = `${api.Forums}/${id}`;
     return this.http.get(url);

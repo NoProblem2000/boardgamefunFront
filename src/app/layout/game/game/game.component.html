@@ -1,0 +1,82 @@
+<div *ngIf="gameData.game" class="game-container">
+  <div class="game-header">
+    <div class="game-header-image">
+      <img [src]=convertImage(gameData!.game.picture)>
+    </div>
+    <div class="game-header-body">
+      <div class="game-header-title-container">
+        <div class="rank-overall">Место в топе: wip</div>
+        <div class="game-header-title">
+          <div class="game-header-title-rating">
+            {{gameData.rating}}
+          </div>
+          <div class="game-header-title-info">
+            <h1>{{gameData.game.title}} ({{getYear()}})</h1>
+          </div>
+          <p>
+            {{gameData.game.annotation}}
+          </p>
+          <div class="analysis">
+            wip analysis ratings and comments
+          </div>
+        </div>
+      </div>
+      <div class="game-header-gameplay-info">
+        <ul class="gameplay-info">
+          <li class="gameplay-info-item">
+            {{gameData.game.playersMin}} - {{gameData.game.playersMax}} Игроков
+          </li>
+          <li class="gameplay-info-item">
+            {{gameData.game.timeToPlayMin}} - {{gameData.game.timeToPlayMax}} Время игры
+          </li>
+          <li class="gameplay-info-item">
+            {{gameData.game.playerAge}}+ Возраст игроков
+          </li>
+        </ul>
+      </div>
+      <div class="game-header-credits">
+        Дизайнеры:
+        <ul *ngFor="let designer of gameData.designers">
+          <li>{{designer}}</li>
+        </ul>
+      </div>
+      <div class="game-header-rating">
+        Моя оценка
+      </div>
+    </div>
+
+  </div>
+
+  <div class="game-details">
+    <mat-tab-group>
+      <mat-tab label="Обзор">
+        {{gameData!.game.description}}
+      </mat-tab>
+
+      <mat-tab label="Рейтинги">
+        wip
+      </mat-tab>
+
+      <mat-tab label="Форумы">
+        wip
+      </mat-tab>
+
+      <mat-tab label="Картинки">
+        wip
+      </mat-tab>
+
+      <mat-tab label="Файлы">
+        wip
+      </mat-tab>
+
+      <mat-tab label="Дополнения">
+        wip
+      </mat-tab>
+
+      <mat-tab label="Похожие">
+        wip
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>

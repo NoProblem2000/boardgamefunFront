@@ -6,7 +6,7 @@
   <ul>
     <li [ngClass]="{'active': isUserMenuOpen }">
       <span (click)="toggleUserMenu()">{{name}}</span>
-      <span> <img [src]=blobToImage(avatar) style="width: 32px"> </span>
+      <span> <img [src]=convertImage(avatar) style="width: 32px"> </span>
       <mat-icon style="margin-left: 5px; margin-right: 5px">message</mat-icon>
     </li>
     <ul class="dropdown_menu" [@animateMenu]="isUserMenuOpen ? 'open' : 'close'">

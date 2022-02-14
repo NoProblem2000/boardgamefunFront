@@ -31,6 +31,10 @@ const routes: Routes =[
     path: 'registration',
     component: RegistrationComponent,
     canDeactivate: [SaveDataGuard]
+  },
+  {
+    path: 'game',
+    loadChildren: () => import('./layout/game/game.module').then(module => module.GameModule)
   }
 ]
 

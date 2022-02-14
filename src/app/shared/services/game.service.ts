@@ -20,4 +20,14 @@ export class GameService {
     const url = `${api.Games}/${api.GameById}/${id}`;
     return this.httpService.get(url);
   }
+
+  public getSimilarGames(id: number){
+    const url = `${api.Games}/${api.SimilarGames}/${id}`;
+    return this.httpService.get(url);
+  }
+
+  public getExpansions(id: number){
+    const url = `${api.Games}/${api.Expansions}/${id}`;
+    return this.httpService.get(url);
+  }
 }
