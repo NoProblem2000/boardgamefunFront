@@ -1,7 +1,7 @@
 <div class="main-page-body">
   <!--todo: right requests on server-->
   <div class="main-page-block">
-    <h1>Игры</h1>
+    <h1>Игры <mat-icon style="cursor: pointer" routerLink="game/edit">add_circle</mat-icon></h1>
     <mat-tab-group headerPosition="below" [backgroundColor]="'primary'" [color]="'accent'">
       <mat-tab label="Новые">
         <app-games-cards [gamesData]="gamesData"></app-games-cards>

@@ -22,7 +22,7 @@ export class UserService {
   }
 
   public uploadAvatar(avatar: any, username: string){
-    const url = `${api.Users}/${api.Avatar}/${username}`;
+    const url = `${api.Users}/${api.UserAvatar}/${username}`;
     return this.httpService.insert(url, avatar);
   }
 

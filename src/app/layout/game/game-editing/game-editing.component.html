@@ -1,1 +1,119 @@
-<p>game-editing works!</p>
+<div class="add-game">
+  <form [formGroup]="gameFormGroup" (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Введите название игры"
+             formControlName="title"
+             required
+             [ngClass]="{
+                  'is-invalid': (getTitle?.dirty || getTitle?.touched) && getTitle?.errors,
+                  'is-valid': (getTitle?.dirty || getTitle?.touched) && !getTitle?.errors}">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             [matDatepicker]="picker"
+             class="form-control"
+             placeholder="Введите дату выпуска игры"
+             formControlName="yearOfRelease"
+             required
+             [ngClass]="{
+                  'is-invalid': (getYearOfRelease?.dirty || getYearOfRelease?.touched) && getYearOfRelease?.errors,
+                  'is-valid': (getYearOfRelease?.dirty || getYearOfRelease?.touched) && !getYearOfRelease?.errors}">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput
+                class="form-control-text-area"
+                placeholder="Аннотация к игре"
+                formControlName="annotation"
+                required
+                [ngClass]="{
+                  'is-invalid': (getAnnotation?.dirty || getAnnotation?.touched) && getAnnotation?.errors,
+                  'is-valid': (getAnnotation?.dirty || getAnnotation?.touched) && !getAnnotation?.errors}"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput
+                class="form-control-text-area"
+                placeholder="Описание к игре"
+                formControlName="description"
+                required
+                [ngClass]="{
+                  'is-invalid': (getDescription?.dirty || getDescription?.touched) && getDescription?.errors,
+                  'is-valid': (getDescription?.dirty || getDescription?.touched) && !getDescription?.errors}"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Желательный возраст игроков"
+             formControlName="playerAge"
+             required
+             [ngClass]="{
+                  'is-invalid': (getPlayerAge?.dirty || getPlayerAge?.touched) && getPlayerAge?.errors,
+                  'is-valid': (getPlayerAge?.dirty || getPlayerAge?.touched) && !getPlayerAge?.errors}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Минимальное количество игроков"
+             formControlName="playersMin"
+             required
+             [ngClass]="{
+                  'is-invalid': (getPlayersMin?.dirty || getPlayersMin?.touched) && getPlayersMin?.errors,
+                  'is-valid': (getPlayersMin?.dirty || getPlayersMin?.touched) && !getPlayersMin?.errors}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Максимальное количество игроков"
+             formControlName="playersMax"
+             required
+             [ngClass]="{
+                  'is-invalid': (getPlayersMax?.dirty || getPlayersMax?.touched) && getPlayersMax?.errors,
+                  'is-valid': (getPlayersMax?.dirty || getPlayersMax?.touched) && !getPlayersMax?.errors}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Минимальное время для игры"
+             formControlName="timeToPlayMin"
+             required
+             [ngClass]="{
+                  'is-invalid': (getTimeToPlayMin?.dirty || getTimeToPlayMin?.touched) && getTimeToPlayMin?.errors,
+                  'is-valid': (getTimeToPlayMin?.dirty || getTimeToPlayMin?.touched) && !getTimeToPlayMin?.errors}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             type="text"
+             class="form-control"
+             placeholder="Максимальное время для игры"
+             formControlName="timeToPlayMax"
+             required
+             [ngClass]="{
+                  'is-invalid': (getTimeToPlayMax?.dirty || getTimeToPlayMax?.touched) && getTimeToPlayMax?.errors,
+                  'is-valid': (getTimeToPlayMax?.dirty || getTimeToPlayMax?.touched) && !getTimeToPlayMax?.errors}">
+    </mat-form-field>
+
+    <mat-form-field>
+      <ngx-mat-file-input formControlName="picture" placeholder="Загрузить картинку"
+                          [accept]="'.jpg'"></ngx-mat-file-input>
+    </mat-form-field>
+
+    <button mat-raised-button
+            color="accent"
+            class="enter-btn successButton"
+            type="submit">
+      Сохранить игру
+    </button>
+  </form>
+</div>
