@@ -1,0 +1,20 @@
+.callout{
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  .rating{
+    border-right: 1px dotted #0d47a1;
+  }
+}
+
+.title{
+  margin-left: 40px;
+  margin-top: 0;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.meta{
+  margin-left: 40px;
+}
+

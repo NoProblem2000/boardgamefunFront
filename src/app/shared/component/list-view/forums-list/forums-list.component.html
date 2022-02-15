@@ -1,0 +1,17 @@
+<div>
+  <ul *ngFor="let forumData of forums">
+    <li>
+      <div class="callout">
+        <span class="rating">{{forumData.rating}}<mat-icon>star</mat-icon></span>
+        <span>wip<mat-icon>message</mat-icon></span>
+      </div>
+      <div class="title">
+        {{forumData.forum.title}}
+      </div>
+      <div class="meta">
+        Автор: {{forumData.forum.user.name}} . Опубликовано: {{getTimePublication(forumData)}}
+      </div>
+    </li>
+
+  </ul>
+</div>

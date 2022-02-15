@@ -8,6 +8,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {FlexModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
+import { ForumsListComponent } from './component/list-view/forums-list/forums-list.component';
 
 
 
@@ -16,7 +17,8 @@ import {RouterModule} from "@angular/router";
     DiaryCardsComponent,
     ForumsCardsComponent,
     UsersCardsComponent,
-    GamesCardsComponent],
+    GamesCardsComponent,
+    ForumsListComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -24,11 +26,12 @@ import {RouterModule} from "@angular/router";
     FlexModule,
     RouterModule
   ],
-  exports:[
+  exports: [
     DiaryCardsComponent,
     ForumsCardsComponent,
     UsersCardsComponent,
-    GamesCardsComponent
+    GamesCardsComponent,
+    ForumsListComponent
   ]
 })
 export class SharedModule { }
