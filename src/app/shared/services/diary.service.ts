@@ -16,6 +16,11 @@ export class DiaryService {
     return this.http.get(url);
   }
 
+  public getGameDiaries(id: number): Observable<DiaryDTO[]>{
+    const url = `${api.Diary}/?gameId=${id}`;
+    return this.http.get(url);
+  }
+
   public getDiary(id: number): Observable<DiaryDTO>{
     const url = `${api.Diary}/${id}`;
     return this.http.get(url);

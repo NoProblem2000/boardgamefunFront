@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../../shared/services/game.service";
 import {ActivatedRoute} from "@angular/router";
-import {ForumDTO, GameDTO} from "../../../shared/interfaces/rest";
+import {DiaryDTO, ForumDTO, GameDTO} from "../../../shared/interfaces/rest";
 import {blobToImage} from "../../../shared/functions/image-operations";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {ForumService} from "../../../shared/services/forum.service";
@@ -19,6 +19,7 @@ export class GameComponent implements OnInit {
   public expansionsGames: GameDTO[] = [];
   public similarGames: GameDTO[] = [];
   public forums: ForumDTO[] = [];
+  public diaries: DiaryDTO[] = [];
 
   gameId: number = 0;
 
@@ -34,11 +35,12 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
 
     this.loaderService.startLoader('app-body');
-    this.initData().subscribe(([Game, Forums, SimilarGames, Expansions]) => {
+    this.initData().subscribe(([Game, Forums, SimilarGames, Expansions, Diaries]) => {
         this.gameData = Game;
         this.forums = Forums;
         this.similarGames = SimilarGames;
         this.expansionsGames = Expansions;
+        this.diaries = Diaries;
         this.loaderService.stopLoader('app-body');
       },
       (error) => {
@@ -58,7 +60,8 @@ export class GameComponent implements OnInit {
       this.gameService.getGame(this.gameId).pipe(catchError(err => of(err))),
       this.forumService.getForumsByGame(this.gameId).pipe(catchError(err => of(err))),
       this.gameService.getSimilarGames(this.gameId).pipe(catchError(err => of(err))),
-      this.gameService.getExpansions(this.gameId).pipe(catchError(err => of(err)))])
+      this.gameService.getExpansions(this.gameId).pipe(catchError(err => of(err))),
+      this.diaryService.getGameDiaries(this.gameId).pipe(catchError(err => of(err)))])
   }
 
   convertImage(blob: any) {

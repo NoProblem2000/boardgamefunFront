@@ -22,6 +22,7 @@ import {FlexModule} from "@angular/flex-layout";
 import {NotifierModule} from "angular-notifier";
 import {AuthService} from "./shared/services/auth.service";
 import {ErrorInterceptorProviders} from "./shared/interceptors/error-interceptor.service";
+import {SharedModule} from "./shared/shared.module";
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {ErrorInterceptorProviders} from "./shared/interceptors/error-interceptor
     NotifierModule.withConfig({
       ...notifierOptions
     }),
+    SharedModule,
   ],
   providers: [authInterceptorProviders,
     ErrorInterceptorProviders,

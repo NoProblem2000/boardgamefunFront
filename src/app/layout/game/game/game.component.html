@@ -48,7 +48,7 @@
   </div>
 
   <div class="game-details">
-    <mat-tab-group>
+    <mat-tab-group [backgroundColor]="'primary'" [color]="'accent'" dynamicHeight>
       <mat-tab label="Обзор">
         {{gameData!.game.description}}
       </mat-tab>
@@ -62,7 +62,7 @@
       </mat-tab>
 
       <mat-tab label="Дневники">
-        wip
+        <app-diary-cards [diaries]="diaries"></app-diary-cards>
       </mat-tab>
 
       <mat-tab label="Картинки">
@@ -74,11 +74,11 @@
       </mat-tab>
 
       <mat-tab label="Дополнения">
-        wip
+        <app-games-cards [gamesData]="expansionsGames"></app-games-cards>
       </mat-tab>
 
       <mat-tab label="Похожие">
-        wip
+        <app-games-cards [gamesData]="similarGames"></app-games-cards>
       </mat-tab>
 
     </mat-tab-group>
