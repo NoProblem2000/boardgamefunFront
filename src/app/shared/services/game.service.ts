@@ -37,6 +37,11 @@ export class GameService {
     return this.httpService.insert(url, picture);
   }
 
+  public getGamesByFilter(filter: string){
+    const url = `${api.Games}/${api.GamesByFilter}/${filter}`;
+    return this.httpService.get(url);
+  }
+
   public addGame(title: string,
                  yearOfRelease: Date,
                  annotation: string,

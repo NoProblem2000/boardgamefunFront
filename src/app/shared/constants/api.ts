@@ -17,6 +17,7 @@ export const api = {
   GameAvatar: 'upload-image',
   GamesRating: 'games-rating',
   GamesToSell: 'games-to-sell',
+  GamesByFilter: 'get-games-by-filter',
   HttpOptions: {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

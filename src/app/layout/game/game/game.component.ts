@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../../shared/services/game.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DiaryDTO, ForumDTO, GameDTO} from "../../../shared/interfaces/rest";
 import {blobToImage} from "../../../shared/functions/image-operations";
 import {catchError, forkJoin, Observable, of} from "rxjs";
@@ -27,7 +27,9 @@ export class GameComponent implements OnInit {
               private route: ActivatedRoute,
               private forumService: ForumService,
               private diaryService: DiaryService,
-              private loaderService: NgxUiLoaderService) {
+              private loaderService: NgxUiLoaderService,
+              private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
     this.gameData = {} as GameDTO;
   }

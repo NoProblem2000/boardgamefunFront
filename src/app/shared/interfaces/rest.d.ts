@@ -95,3 +95,8 @@ export interface User {
   avatar: any;
   registrationDate: Date;
 }
+
+export interface FilterGamesDTO{
+  id: number;
+  title: string
+}

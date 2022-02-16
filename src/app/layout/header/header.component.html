@@ -9,14 +9,13 @@
     <input type="text"
            placeholder="Введите название игры"
            matInput
+           #matInput
+           (keyup)="applyFilter($event)"
            [matAutocomplete]="autoComplete">
     <mat-autocomplete #autoComplete="matAutocomplete">
-      <!-- <mat-option *ngFor="let game of filteredGames | async" [value]="title">
-         {{title}}
-       </mat-option>-->
-      <mat-option>
-        test!
-      </mat-option>
+       <mat-option *ngFor="let game of filteredGames" [value]="game.title" routerLink="/game/{{game.id}}" (click)="matInput.value=''">
+         {{game.title}}
+       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </mat-toolbar>

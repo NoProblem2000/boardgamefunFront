@@ -23,6 +23,7 @@ import {NotifierModule} from "angular-notifier";
 import {AuthService} from "./shared/services/auth.service";
 import {ErrorInterceptorProviders} from "./shared/interceptors/error-interceptor.service";
 import {SharedModule} from "./shared/shared.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -31,27 +32,28 @@ import {SharedModule} from "./shared/shared.module";
     HeaderComponent,
     MainPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutesModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    RouterModule,
-    HttpClientModule,
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatTabsModule,
-    MatCardModule,
-    MatIconModule,
-    FlexModule,
-    NotifierModule.withConfig({
-      ...notifierOptions
-    }),
-    SharedModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutesModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        RouterModule,
+        HttpClientModule,
+        NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatCardModule,
+        MatIconModule,
+        FlexModule,
+        NotifierModule.withConfig({
+            ...notifierOptions
+        }),
+        SharedModule,
+        FormsModule,
+    ],
   providers: [authInterceptorProviders,
     ErrorInterceptorProviders,
     AuthService],
