@@ -15,6 +15,8 @@ export const api = {
   Diary: 'diaries',
   UserAvatar: 'upload-avatar',
   GameAvatar: 'upload-image',
+  GamesRating: 'games-rating',
+  GamesToSell: 'games-to-sell',
   HttpOptions: {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

@@ -21,6 +21,11 @@ export class ForumService {
     return this.http.get(url);
   }
 
+  public getForumsByUser(userId: number){
+    const url = `${api.Forums}?userId=${userId}`;
+    return this.http.get(url);
+  }
+
   public getForum(id: number): Observable<ForumDTO>{
     const url = `${api.Forums}/${id}`;
     return this.http.get(url);

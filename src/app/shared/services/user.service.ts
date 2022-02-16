@@ -21,6 +21,21 @@ export class UserService {
     return this.httpService.get(url);
   }
 
+  public getUserGames(userId: number){
+    const url = `${api.Users}/${userId}/${api.Games}`;
+    return this.httpService.get(url);
+  }
+
+  public getRatingList(userId: number){
+    const url = `${api.Users}/${userId}/${api.GamesRating}`;
+    return this.httpService.get(url);
+  }
+
+  public getGamesForSell(userId: number){
+    const url = `${api.Users}/${userId}/${api.GamesToSell}`;
+    return this.httpService.get(url);
+  }
+
   public uploadAvatar(avatar: any, username: string){
     const url = `${api.Users}/${api.UserAvatar}/${username}`;
     return this.httpService.insert(url, avatar);

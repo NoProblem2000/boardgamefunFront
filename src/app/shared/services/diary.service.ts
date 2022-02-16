@@ -21,6 +21,11 @@ export class DiaryService {
     return this.http.get(url);
   }
 
+  public getUserDiaries(userId: number): Observable<DiaryDTO[]>{
+    const url = `${api.Diary}/?userId=${userId}`;
+    return this.http.get(url);
+  }
+
   public getDiary(id: number): Observable<DiaryDTO>{
     const url = `${api.Diary}/${id}`;
     return this.http.get(url);
