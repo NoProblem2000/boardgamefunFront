@@ -9,6 +9,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {FlexModule} from "@angular/flex-layout";
 import {RouterModule} from "@angular/router";
 import { ForumsListComponent } from './component/list-view/forums-list/forums-list.component';
+import { GamesRatingListComponent } from './component/list-view/games-rating-list/games-rating-list.component';
 
 
 
@@ -18,7 +19,8 @@ import { ForumsListComponent } from './component/list-view/forums-list/forums-li
     ForumsCardsComponent,
     UsersCardsComponent,
     GamesCardsComponent,
-    ForumsListComponent],
+    ForumsListComponent,
+    GamesRatingListComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -31,7 +33,8 @@ import { ForumsListComponent } from './component/list-view/forums-list/forums-li
     ForumsCardsComponent,
     UsersCardsComponent,
     GamesCardsComponent,
-    ForumsListComponent
+    ForumsListComponent,
+    GamesRatingListComponent
   ]
 })
 export class SharedModule { }

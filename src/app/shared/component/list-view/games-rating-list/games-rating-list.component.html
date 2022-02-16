@@ -1,0 +1,13 @@
+<div>
+  <ul *ngFor="let gameDTO of gamesData">
+    <li>
+      <div class="callout">
+        <span class="rating">{{gameDTO.rating}}
+          <mat-icon>star</mat-icon></span>
+      </div>
+      <a class="title" routerLink="/game/{{gameDTO.game.id}}">
+        {{gameDTO.game.title}}
+      </a>
+    </li>
+  </ul>
+</div>
