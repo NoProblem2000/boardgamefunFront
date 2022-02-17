@@ -18,6 +18,7 @@ export const api = {
   GamesRating: 'games-rating',
   GamesToSell: 'games-to-sell',
   GamesByFilter: 'get-games-by-filter',
+  ForumsMessages: 'messages',
   HttpOptions: {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

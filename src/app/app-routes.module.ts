@@ -41,6 +41,10 @@ const routes: Routes =[
   {
     path: 'user',
     loadChildren: () => import('./layout/user/user.module').then(module => module.UserModule)
+  },
+  {
+    path: 'forum',
+    loadChildren: () => import('./layout/forum/forum.module').then(module => module.ForumModule)
   }
 ]
 

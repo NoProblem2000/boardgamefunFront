@@ -5,7 +5,7 @@
         <span class="rating">{{forumData.rating}}<mat-icon>star</mat-icon></span>
         <span>wip<mat-icon>message</mat-icon></span>
       </div>
-      <div class="title">
+      <div class="title" routerLink="/forum/{{forumData.forum.id}}">
         {{forumData.forum.title}}
       </div>
       <div class="meta">

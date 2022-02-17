@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpGlobalService} from "./http-global.service";
 import {Observable} from "rxjs";
-import {ForumDTO} from "../interfaces/rest";
+import {ForumDTO, ForumMessageDTO} from "../interfaces/rest";
 import {api} from "../constants/api";
 
 @Injectable({
@@ -28,6 +28,11 @@ export class ForumService {
 
   public getForum(id: number): Observable<ForumDTO>{
     const url = `${api.Forums}/${id}`;
+    return this.http.get(url);
+  }
+
+  public getForumMessagesInGame(forumId: number): Observable<ForumMessageDTO[]>{
+    const url = `${api.Forums}/${api.ForumsMessages}/?forumId=${forumId}`;
     return this.http.get(url);
   }
 

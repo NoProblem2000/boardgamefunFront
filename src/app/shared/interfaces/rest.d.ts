@@ -28,6 +28,7 @@ export interface ForumMessageDTO {
   id: number;
   message: string;
   messageTime: Date;
+  user: User;
 }
 
 export interface GameDTO {
