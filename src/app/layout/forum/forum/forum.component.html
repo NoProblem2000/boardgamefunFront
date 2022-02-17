@@ -1,5 +1,5 @@
 <div *ngIf="forumDTO.forum?.user" class="forum-container">
-  <div class="game-link">
+  <div class="game-link" routerLink="/game/{{forumDTO.forum.game.id}}">
     <img class="responsive" [src]="convertToImage(forumDTO.forum.game.picture)">
     <span class="game-link-header">{{forumDTO.forum.game.title}}</span>
   </div>
@@ -37,5 +37,19 @@
     </div>
   </div>
   <div class="new-message">
+    <form [formGroup]="messageFormGroup" (submit)="onSubmit()">
+     <textarea matInput
+               class="form-control-text-area"
+               placeholder="Сообщение"
+               formControlName="message"
+               required
+               [ngClass]="{
+                  'is-invalid': (getMessage?.dirty || getMessage?.touched) && getMessage?.errors,
+                  'is-valid': (getMessage?.dirty || getMessage?.touched) && !getMessage?.errors}"></textarea>
+      <button mat-raised-button
+              color="accent"
+              type="submit">Добавить комментарий
+      </button>
+    </form>
   </div>
 </div>

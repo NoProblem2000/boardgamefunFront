@@ -5,6 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes =[
   {
@@ -22,7 +23,8 @@ const routes: Routes =[
     RouterModule.forChild(routes),
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ]
 })
 export class ForumModule { }

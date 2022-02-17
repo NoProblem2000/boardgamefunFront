@@ -6,6 +6,7 @@
 .game-link{
   padding: 1%;
   background: #3b6fbe;
+  cursor: pointer;
 }
 
 .game-link-header{
@@ -32,10 +33,9 @@
   border-bottom: 2px solid #052049;
 }
 
-
 .responsive {
   width: 100%;
-  max-width: 100px;
+  max-width: 75px;
   height: auto;
 }
 
@@ -47,4 +47,14 @@
 }
 hr {
   color: #052049;
+}
+
+.new-message{
+  padding-top: 1%;
+}
+
+.form-control-text-area{
+  border: 1px solid #052049;
+  margin-bottom: 1%;
+  height: 7vh;
 }
