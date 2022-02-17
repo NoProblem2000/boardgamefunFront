@@ -6,8 +6,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import { NewForumTopicComponent } from './new-forum-topic/new-forum-topic.component';
 
 const routes: Routes =[
+  {
+    path: 'create-topic/:gameId',
+    component: NewForumTopicComponent
+  },
   {
     path: ':id',
     component: ForumComponent
@@ -16,7 +21,8 @@ const routes: Routes =[
 
 @NgModule({
   declarations: [
-    ForumComponent
+    ForumComponent,
+    NewForumTopicComponent
   ],
   imports: [
     CommonModule,

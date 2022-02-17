@@ -7,6 +7,8 @@ import {catchError, forkJoin, Observable, of} from "rxjs";
 import {ForumService} from "../../../shared/services/forum.service";
 import {DiaryService} from "../../../shared/services/diary.service";
 import {NgxUiLoaderService} from "ngx-ui-loader";
+import {AuthService} from "../../../shared/services/auth.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-game',
@@ -28,7 +30,9 @@ export class GameComponent implements OnInit {
               private forumService: ForumService,
               private diaryService: DiaryService,
               private loaderService: NgxUiLoaderService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService,
+              private notifier: NotifierService,) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
     this.gameData = {} as GameDTO;
@@ -68,6 +72,14 @@ export class GameComponent implements OnInit {
 
   convertImage(blob: any) {
     return blobToImage(blob);
+  }
+
+  createNewTopic(gameId: number): void{
+    if (!this.authService.isLoggedIn) {
+      this.notifier.notify("error", "Для добавления сообщения вам необходимо быть авторизованным")
+      return;
+    }
+    this.router.navigateByUrl("/forum/create-topic/" + gameId);
   }
 
 }

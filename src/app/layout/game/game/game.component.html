@@ -58,6 +58,9 @@
       </mat-tab>
 
       <mat-tab label="Форумы">
+        <button mat-raised-button
+                class="add-topic"
+                color="accent" (click)="createNewTopic(gameData.game.id)"> <mat-icon>add</mat-icon> Добавить </button>
         <app-forums-list [forums]="forums"></app-forums-list>
       </mat-tab>
 
