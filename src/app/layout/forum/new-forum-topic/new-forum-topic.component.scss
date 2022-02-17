@@ -10,4 +10,9 @@
 form{
   display: flex;
   flex-direction: column;
+  width: 50%;
+}
+
+textarea{
+  height: 10vh;
 }

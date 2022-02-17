@@ -1,34 +1,31 @@
-<!--
 <div class="new-topic">
-  <form [formGroup]="" (submit)="onSubmit()">
+  <form [formGroup]="messageFormGroup" (submit)="onSubmit()">
     <mat-form-field>
-      <input matInput
-             type="text"
-             class="form-control"
-             placeholder="Введите логин..."
-             formControlName="username"
-             required
-             [ngClass]="{
-                  'is-invalid': (getUsername?.dirty || getUsername?.touched) && getUsername?.errors,
-                  'is-valid': (getUsername?.dirty || getUsername?.touched) && !getUsername?.errors}">
+     <textarea matInput
+               class="form-control-text-area"
+               placeholder="Заголовок"
+               formControlName="title"
+               required
+               [ngClass]="{
+                  'is-invalid': (getTitle?.dirty || getTitle?.touched) && getTitle?.errors,
+                  'is-valid': (getTitle?.dirty || getTitle?.touched) && !getTitle?.errors}"></textarea>
     </mat-form-field>
     <mat-form-field>
-      <input matInput
-             type="password"
-             class="form-control"
-             placeholder="Введите пароль..."
-             formControlName="password"
-             required
-             [ngClass]="{
-                  'is-invalid': (getPassword?.dirty || getPassword?.touched) && getPassword?.errors,
-                  'is-valid': (getPassword?.dirty || getPassword?.touched) && !getPassword?.errors}">
+      <textarea matInput
+                class="form-control-text-area"
+                placeholder="Сообщение"
+                formControlName="text"
+                required
+                [ngClass]="{
+                  'is-invalid': (getText?.dirty || getText?.touched) && getText?.errors,
+                  'is-valid': (getText?.dirty || getText?.touched) && !getText?.errors}"></textarea>
+
     </mat-form-field>
     <button mat-raised-button
             color="accent"
             class="enter-btn successButton"
             type="submit">
-      Войти
+      Создать тему
     </button>
   </form>
 </div>
--->
