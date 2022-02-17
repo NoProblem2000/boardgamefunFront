@@ -20,6 +20,7 @@ export const api = {
   GamesByFilter: 'get-games-by-filter',
   ForumsMessages: 'messages',
   AddForumMessage: 'add-message',
+  AddForum: 'add-forum',
   HttpOptions: {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

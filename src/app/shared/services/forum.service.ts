@@ -42,5 +42,9 @@ export class ForumService {
     return this.http.insert(url, {comment});
   }
 
+  public addForum(userId: number, gameId: number, title: string, text: string): Observable<ForumDTO>{
+    const url = `${api.Forums}/${api.AddForum}/${gameId}/${userId}`;
+    return this.http.insert(url, {title, text})
+  }
 
 }
