@@ -19,8 +19,8 @@
     </div>
   </div>
 
- <!-- <div class="diary-messages">
-    <div class="diary-message" *ngFor="let diaryMessageDTO of diaryMessagesDTO">
+  <div class="diary-messages">
+    <div class="diary-message" *ngFor="let diaryMessageDTO of diaryMessages">
       <div class="callout">
         <div class="diary-message-rating">
           <mat-icon>star</mat-icon>
@@ -29,14 +29,14 @@
           <img [src]=convertToImage(diaryMessageDTO.user.avatar) class="responsive">
         </div>
         <div class="diary-user-name-message">{{diaryMessageDTO.user.name}}</div>
-        <div class="diary-message-date-creation">{{getDate(diaryMessageDTO.messageTime)}}</div>
+        <div class="diary-message-date-creation">{{getDate(diaryMessageDTO.time)}}</div>
       </div>
       <div class="diary-message-body">
-        {{diaryMessageDTO.message}}
+        {{diaryMessageDTO.comment}}
       </div>
     </div>
   </div>
-  <div class="new-message">
+  <!--<div class="new-message">
     <form [formGroup]="messageFormGroup" (submit)="onSubmit()">
      <textarea matInput
                class="form-control-text-area"

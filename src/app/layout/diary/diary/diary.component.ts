@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DiaryDTO} from "../../../shared/interfaces/rest";
+import {DiaryCommentDTO, DiaryDTO} from "../../../shared/interfaces/rest";
 import {ActivatedRoute} from "@angular/router";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {DiaryService} from "../../../shared/services/diary.service";
@@ -16,6 +16,7 @@ export class DiaryComponent implements OnInit {
 
   diaryMessageFrom!: FormGroup;
   diaryMessage!: string;
+  diaryMessages: DiaryCommentDTO[] = []
   diaryDTO: DiaryDTO;
   diaryId: number;
 
@@ -31,15 +32,17 @@ export class DiaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loaderService.startLoader('app-body');
-    this.initData().subscribe(([Diary]) => {
+    this.initData().subscribe(([Diary, DiaryComments]) => {
       this.diaryDTO = Diary;
+      this.diaryMessages = DiaryComments;
       this.loaderService.stopLoader('app-body');
     });
   }
 
   initData(): Observable<any> {
     return forkJoin([
-      this.diaryService.getDiary(this.diaryId).pipe(catchError(err => of(err)))
+      this.diaryService.getDiary(this.diaryId).pipe(catchError(err => of(err))),
+      this.diaryService.getDiariesMessages(this.diaryId).pipe(catchError(err => of(err)))
     ])
   }
 

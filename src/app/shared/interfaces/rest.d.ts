@@ -7,6 +7,7 @@ export interface DiaryCommentDTO {
   id: number;
   comment: string;
   time: Date;
+  user: User;
 }
 
 export interface DiaryDTO {
