@@ -6,7 +6,7 @@ import {DiaryService} from "../../../shared/services/diary.service";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {DiaryDTO, ForumDTO, GameDTO, UserDTO} from "../../../shared/interfaces/rest";
 import {catchError, forkJoin, Observable, of} from "rxjs";
-import {blobToImage} from "../../../shared/functions/image-operations";
+import {blobToImage} from "../../../shared/functions/shared-func";
 
 @Component({
   selector: 'app-user',

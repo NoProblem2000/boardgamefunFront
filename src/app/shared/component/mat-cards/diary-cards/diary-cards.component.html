@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
   <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of diaries">
-    <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" routerLink="/diary/{{data.diary.id}}">
       <img mat-card-lg-image src="/assets/icons/diary.png">
       <mat-card-content>{{data.diary.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
         <mat-icon>star</mat-icon></span>

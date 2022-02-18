@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../../shared/services/game.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DiaryDTO, ForumDTO, GameDTO} from "../../../shared/interfaces/rest";
-import {blobToImage} from "../../../shared/functions/image-operations";
+import {blobToImage} from "../../../shared/functions/shared-func";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {ForumService} from "../../../shared/services/forum.service";
 import {DiaryService} from "../../../shared/services/diary.service";

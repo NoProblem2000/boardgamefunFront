@@ -6,7 +6,7 @@ import {ForumService} from "../../shared/services/forum.service";
 import {DiaryDTO, ForumDTO, GameDTO, User, UserDTO} from "../../shared/interfaces/rest";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {NgxUiLoaderService} from "ngx-ui-loader";
-import {blobToImage} from "../../shared/functions/image-operations";
+import {blobToImage} from "../../shared/functions/shared-func";
 
 @Component({
   selector: 'app-main-page',

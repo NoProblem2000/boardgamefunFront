@@ -4,7 +4,7 @@ import {ForumDTO, ForumMessageDTO} from "../../../shared/interfaces/rest";
 import {ActivatedRoute, Router} from "@angular/router";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {NgxUiLoaderService} from "ngx-ui-loader";
-import {blobToImage} from "../../../shared/functions/image-operations";
+import {blobToImage, ConvertToLocaleDate} from "../../../shared/functions/shared-func";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../shared/services/auth.service";
 import {NotifierService} from "angular-notifier";
@@ -78,9 +78,8 @@ export class ForumComponent implements OnInit {
 
   }
 
-  getDate(date: Date): string {
-    const d = new Date(date);
-    return d.toLocaleDateString();
+  getDate(date: Date): string{
+    return ConvertToLocaleDate(date);
   }
 
   private initData(): Observable<any> {

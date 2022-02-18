@@ -4,7 +4,7 @@ import {TokenStorageService} from "../../../shared/services/token-storage.servic
 import {Router} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {UserService} from "../../../shared/services/user.service";
-import {blobToImage} from "../../../shared/functions/image-operations";
+import {blobToImage} from "../../../shared/functions/shared-func";
 
 @Component({
   selector: 'app-user-menu',

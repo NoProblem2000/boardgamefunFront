@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserDTO} from "../../../interfaces/rest";
-import {blobToImage} from "../../../functions/image-operations";
+import {blobToImage} from "../../../functions/shared-func";
 
 @Component({
   selector: 'app-users-cards',
