@@ -36,20 +36,20 @@
       </div>
     </div>
   </div>
-  <!--<div class="new-message">
-    <form [formGroup]="messageFormGroup" (submit)="onSubmit()">
+  <div class="new-message">
+    <form [formGroup]="diaryMessageForm" (submit)="onSubmit()">
      <textarea matInput
                class="form-control-text-area"
                placeholder="Сообщение"
                formControlName="message"
                required
                [ngClass]="{
-                  'is-invalid': (getMessage?.dirty || getMessage?.touched) && getMessage?.errors,
-                  'is-valid': (getMessage?.dirty || getMessage?.touched) && !getMessage?.errors}"></textarea>
+                  'is-invalid': (getDiaryMessage?.dirty || getDiaryMessage?.touched) && getDiaryMessage?.errors,
+                  'is-valid': (getDiaryMessage?.dirty || getDiaryMessage?.touched) && !getDiaryMessage?.errors}"></textarea>
       <button mat-raised-button
               color="accent"
               type="submit">Добавить комментарий
       </button>
     </form>
-  </div>-->
+  </div>
 </div>

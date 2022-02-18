@@ -26,7 +26,7 @@ export class ForumComponent implements OnInit {
   constructor(private forumService: ForumService,
               private route: ActivatedRoute,
               private loaderService: NgxUiLoaderService,
-              public authService: AuthService,
+              private authService: AuthService,
               private notifier: NotifierService,
               private tokenStorage: TokenStorageService,
               private router: Router) {

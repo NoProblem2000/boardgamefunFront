@@ -37,4 +37,8 @@ export class DiaryService {
     return this.http.get(url);
   }
 
+  public addDiaryMessage(diaryId: number, userId: number, comment: string): Observable<DiaryCommentDTO[]> {
+    const url = `${api.Diary}/${diaryId}/add-comment/${userId}`;
+    return this.http.insert(url, {comment: comment});
+  }
 }
