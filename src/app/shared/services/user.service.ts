@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpGlobalService} from "./http-global.service";
 import {Observable} from "rxjs";
-import {User, UserDTO} from "../interfaces/rest";
+import {DiaryDTO, User, UserDTO} from "../interfaces/rest";
 import {api} from "../constants/api";
 
 @Injectable({
@@ -39,6 +39,11 @@ export class UserService {
   public uploadAvatar(avatar: any, username: string){
     const url = `${api.Users}/${api.UserAvatar}/${username}`;
     return this.httpService.insert(url, avatar);
+  }
+
+  public createDiary(userId: number, gameId: number, title: string, text: string): Observable<DiaryDTO>{
+    const url = `${api.Users}/${userId}/${api.CreateDiary}/${gameId}`;
+    return this.httpService.insert(url, {title, text});
   }
 
 }

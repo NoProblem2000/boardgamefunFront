@@ -43,7 +43,7 @@ export class ForumService {
   }
 
   public addForum(userId: number, gameId: number, title: string, text: string): Observable<ForumDTO>{
-    const url = `${api.Forums}/${api.AddForum}/${gameId}/${userId}`;
+    const url = `${api.Forums}/${api.CreateForum}/${gameId}/${userId}`;
     return this.http.insert(url, {title, text})
   }
 

@@ -7,8 +7,13 @@ import {MatIconModule} from "@angular/material/icon";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import { NewDiaryComponent } from './new-diary/new-diary.component';
 
 const routes: Routes = [
+  {
+    path: 'create-diary/:id',
+    component: NewDiaryComponent
+  },
   {
     path: ':id',
     component: DiaryComponent
@@ -18,7 +23,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    DiaryComponent
+    DiaryComponent,
+    NewDiaryComponent
   ],
   imports: [
     CommonModule,

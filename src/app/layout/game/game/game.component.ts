@@ -76,10 +76,18 @@ export class GameComponent implements OnInit {
 
   createNewTopic(gameId: number): void{
     if (!this.authService.isLoggedIn) {
-      this.notifier.notify("error", "Для добавления сообщения вам необходимо быть авторизованным")
+      this.notifier.notify("error", "Для добавления темы вам необходимо быть авторизованным")
       return;
     }
     this.router.navigateByUrl("/forum/create-topic/" + gameId);
+  }
+
+  createDiary(gameId: number): void{
+    if (!this.authService.isLoggedIn) {
+      this.notifier.notify("error", "Для добавления дневника вам необходимо быть авторизованным")
+      return;
+    }
+    this.router.navigateByUrl("/diary/create-diary/" + gameId);
   }
 
 }
