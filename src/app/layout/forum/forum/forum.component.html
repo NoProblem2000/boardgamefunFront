@@ -22,7 +22,8 @@
       <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="editTopic()">Редактировать</span>
       <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit"
             (click)="deleteTopic()">Удалить</span>
-      <span *ngIf="editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="saveEditsInTopic()"> Сохранить </span>
+      <span *ngIf="editableTopic && forumDTO.forum.user.id === token.id" class="edit"
+            (click)="saveEditsInTopic(forumDTO.forum.text)"> Сохранить </span>
     </div>
   </div>
 
@@ -44,7 +45,8 @@
       </div>
       <div class="edit-form">
         <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit" (click)="editMessage()">Редактировать</span>
-        <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit" (click)="deleteMessage(forumMessageDTO.id)">Удалить</span>
+        <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit"
+              (click)="deleteMessage(forumMessageDTO.id)">Удалить</span>
         <span *ngIf="editableMessage && forumMessageDTO.user.id === token.id" class="edit"
               (click)="saveEditsInMessage(forumMessageDTO.id, forumMessageDTO.message)"> Сохранить </span>
       </div>

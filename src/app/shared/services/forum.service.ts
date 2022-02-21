@@ -57,4 +57,9 @@ export class ForumService {
     return this.http.insert(url, {title, text})
   }
 
+  public updateForum(forumId: number, text: string){
+    const url = `${api.Forums}/${api.UpdateForum}/${forumId}`;
+    return this.http.patch(url, {text});
+  }
+
 }

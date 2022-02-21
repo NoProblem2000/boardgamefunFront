@@ -96,7 +96,11 @@ export class ForumComponent implements OnInit {
     return blobToImage(blob);
   }
 
-  saveEditsInTopic(): void {
+  saveEditsInTopic(text: string): void {
+    this.forumService.updateForum(this.forumId, text).subscribe(() => {
+      // todo: change return type in back or not reload page.
+      this.reloadPage();
+    });
     this.editableTopic = false;
   }
 
