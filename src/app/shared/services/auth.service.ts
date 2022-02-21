@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {api} from "../constants/api";
 
 const httpOptions = {
@@ -14,8 +14,10 @@ const httpOptions = {
 export class AuthService {
 
   isLoggedIn = false;
+  enter: Subject<void>;
 
   constructor(private http: HttpClient) {
+    this.enter = new Subject<void>();
   }
 
   signIn(name: string, password: string): Observable<any> {

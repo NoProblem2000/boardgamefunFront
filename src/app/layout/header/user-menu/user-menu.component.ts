@@ -35,10 +35,13 @@ export class UserMenuComponent implements OnInit {
               private router: Router,
               private userService: UserService) {
     this.name = tokenStorage.getUser().userName;
-    if (tokenStorage.getUser()?.id)
-      this.userService.getUser(tokenStorage.getUser().id).subscribe(res => {
-        this.avatar = res.user.avatar;
-      })
+    this.authService.enter.subscribe(() => {
+      if (tokenStorage.getUser()?.id)
+        this.userService.getUser(tokenStorage.getUser().id).subscribe(res => {
+          this.avatar = res.user.avatar;
+        })
+    })
+
   }
 
   ngOnInit(): void {
