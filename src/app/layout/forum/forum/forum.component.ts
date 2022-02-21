@@ -22,6 +22,12 @@ export class ForumComponent implements OnInit {
   public forumDTO: ForumDTO;
   private forumId: number;
   public forumMessagesDTO: ForumMessageDTO[] = [];
+  public editableMessage = false;
+  public editableTopic = false;
+  public currentEditableMessageId!: number | null;
+  public token: any;
+
+  //todo: edit only current message and make checks for this user(use id for both cases)
 
   constructor(private forumService: ForumService,
               private route: ActivatedRoute,
@@ -36,6 +42,7 @@ export class ForumComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.token = this.tokenStorage.getUser();
     this.messageFormGroup = new FormGroup({
       message: new FormControl(this.message, [Validators.required])
     });
@@ -68,8 +75,7 @@ export class ForumComponent implements OnInit {
   }
 
   addMessage(): void {
-    const token = this.tokenStorage.getUser();
-    this.forumService.addForumMessage(this.forumId, token.id, this.message).subscribe(() => {
+    this.forumService.addForumMessage(this.forumId, this.token.id, this.message).subscribe(() => {
       let currentUrl = this.router.url;
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.router.onSameUrlNavigation = 'reload';
@@ -78,7 +84,7 @@ export class ForumComponent implements OnInit {
 
   }
 
-  getDate(date: Date): string{
+  getDate(date: Date): string {
     return ConvertToLocaleDate(date);
   }
 
@@ -92,5 +98,31 @@ export class ForumComponent implements OnInit {
   convertToImage(blob: any): any {
     return blobToImage(blob);
   }
+
+  saveEditsInTopic(): void {
+    this.editableTopic = false;
+  }
+
+  deleteTopic(): void {
+
+  }
+
+  deleteMessage(): void {
+
+  }
+
+  saveEditsInMessage(): void {
+    this.currentEditableMessageId = null;
+    this.editableMessage = false;
+  }
+
+  editMessage(): void {
+    this.editableMessage = true;
+  }
+
+  editTopic(): void {
+    this.editableTopic = true;
+  }
+
 
 }

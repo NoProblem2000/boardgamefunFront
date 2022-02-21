@@ -5,8 +5,9 @@ import {RouterModule, Routes} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NewForumTopicComponent } from './new-forum-topic/new-forum-topic.component';
+import {ContenteditableValueAccessorModule} from "@tinkoff/angular-contenteditable-accessor";
 
 const routes: Routes =[
   {
@@ -26,11 +27,13 @@ const routes: Routes =[
   ],
   imports: [
     CommonModule,
+    ContenteditableValueAccessorModule,
     RouterModule.forChild(routes),
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ForumModule { }

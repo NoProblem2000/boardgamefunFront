@@ -15,7 +15,12 @@
     <div class="forum-header-body">
       <h1>{{forumDTO.forum.title}}</h1>
       <hr>
-      {{forumDTO.forum.text}}
+      <div [(ngModel)]="forumDTO.forum.text" [disabled] = "!editableTopic || !(forumDTO.forum.user.id === token.id)" contenteditable></div>
+    </div>
+    <div class="edit-form">
+      <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="editTopic()">Редактировать</span>
+      <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="deleteTopic()">Удалить</span>
+      <span *ngIf="editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="saveEditsInTopic()"> Сохранить </span>
     </div>
   </div>
 
@@ -31,8 +36,12 @@
         <div class="forum-user-name-message">{{forumMessageDTO.user.name}}</div>
         <div class="forum-message-date-creation">{{getDate(forumMessageDTO.messageTime)}}</div>
       </div>
-      <div class="forum-message-body">
-        {{forumMessageDTO.message}}
+      <div [(ngModel)]="forumMessageDTO.message" [disabled] = "!editableMessage || !(forumMessageDTO.user.id === token.id)" class="forum-message-body" contenteditable>
+      </div>
+      <div class="edit-form">
+        <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit" (click)="editMessage()">Редактировать</span>
+        <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit" (click)="deleteMessage()">Удалить</span>
+        <span *ngIf="editableMessage && forumMessageDTO.user.id === token.id" class="edit" (click)="saveEditsInMessage()"> Сохранить </span>
       </div>
     </div>
   </div>
