@@ -22,6 +22,8 @@ export const api = {
   AddForumMessage: 'add-message',
   CreateForum: 'add-forum',
   CreateDiary: 'add-diary',
+  UpdateForumMessage: 'update-message',
+  DeleteForumMessage: 'delete-message',
   HttpOptions: {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }

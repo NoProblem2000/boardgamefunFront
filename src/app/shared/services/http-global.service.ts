@@ -30,4 +30,9 @@ export class HttpGlobalService {
     return this.httpClient.patch(url, data);
   }
 
+  delete(request: string): Observable<any>{
+    const url = `${api.Gateway}/${request}`;
+    return this.httpClient.delete(url);
+  }
+
 }

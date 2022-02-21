@@ -76,10 +76,7 @@ export class ForumComponent implements OnInit {
 
   addMessage(): void {
     this.forumService.addForumMessage(this.forumId, this.token.id, this.message).subscribe(() => {
-      let currentUrl = this.router.url;
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate([currentUrl]);
+      this.reloadPage();
     });
 
   }
@@ -107,11 +104,16 @@ export class ForumComponent implements OnInit {
 
   }
 
-  deleteMessage(): void {
-
+  deleteMessage(forumMessageId: number): void {
+    this.forumService.deleteForumMessage(this.forumId, forumMessageId).subscribe(() => {
+      this.reloadPage();
+    });
   }
 
-  saveEditsInMessage(): void {
+  saveEditsInMessage(forumMessageId: number, message: string): void {
+    this.forumService.updateForumMessage(this.forumId, forumMessageId, message).subscribe(() => {
+      this.reloadPage();
+    });
     this.currentEditableMessageId = null;
     this.editableMessage = false;
   }
@@ -124,5 +126,12 @@ export class ForumComponent implements OnInit {
     this.editableTopic = true;
   }
 
+
+  reloadPage(): void {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
 
 }

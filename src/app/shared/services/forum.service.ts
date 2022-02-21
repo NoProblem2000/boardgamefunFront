@@ -42,7 +42,17 @@ export class ForumService {
     return this.http.insert(url, {comment});
   }
 
-  public addForum(userId: number, gameId: number, title: string, text: string): Observable<ForumDTO>{
+  public updateForumMessage(forumId: number, forumMessageId: number, comment: string): Observable<ForumMessageDTO[]>  {
+    const url = `${api.Forums}/${forumId}/${api.UpdateForumMessage}/${forumMessageId}`;
+    return this.http.patch(url, {comment});
+  }
+
+  public deleteForumMessage(forumId: number, forumMessageId: number): Observable<ForumMessageDTO[]> {
+    const url = `${api.Forums}/${forumId}/${api.DeleteForumMessage}/${forumMessageId}`;
+    return this.http.delete(url);
+  }
+
+  public addForum(userId: number, gameId: number, title: string, text: string): Observable<ForumDTO> {
     const url = `${api.Forums}/${api.CreateForum}/${gameId}/${userId}`;
     return this.http.insert(url, {title, text})
   }
