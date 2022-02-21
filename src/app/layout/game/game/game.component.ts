@@ -42,12 +42,12 @@ export class GameComponent implements OnInit {
 
     this.loaderService.startLoader('app-body');
     this.initData().subscribe(([Game, Forums, SimilarGames, Expansions, Diaries]) => {
+        this.loaderService.stopLoader('app-body');
         this.gameData = Game;
         this.forums = Forums;
         this.similarGames = SimilarGames;
         this.expansionsGames = Expansions;
         this.diaries = Diaries;
-        this.loaderService.stopLoader('app-body');
       },
       (error) => {
         this.loaderService.stopLoader('app-body');
