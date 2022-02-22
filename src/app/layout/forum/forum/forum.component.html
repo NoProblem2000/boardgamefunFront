@@ -1,0 +1,71 @@
+<div *ngIf="forumDTO.forum?.user" class="forum-container">
+  <div class="game-link" routerLink="/game/{{forumDTO.forum.game.id}}">
+    <img class="responsive" [src]="convertToImage(forumDTO.forum.game.picture)">
+    <span class="game-link-header">{{forumDTO.forum.game.title}}</span>
+  </div>
+  <div class="forum-header">
+    <div class="callout">
+      <div class="forum-rating">{{forumDTO.rating}}
+        <mat-icon>star</mat-icon>
+      </div>
+      <div class="forum-avatar-creator"><img [src]=convertToImage(forumDTO.forum.user.avatar) class="responsive"></div>
+      <div class="forum-user-creator">{{forumDTO.forum.user.name}}</div>
+      <div class="forum-date-creation">{{getDate(forumDTO.forum.publicationTime)}}</div>
+    </div>
+    <div class="forum-header-body">
+      <h1>{{forumDTO.forum.title}}</h1>
+      <hr>
+      <div [(ngModel)]="forumDTO.forum.text" [disabled]="!editableTopic || !(forumDTO.forum.user.id === token.id)"
+           contenteditable></div>
+    </div>
+    <div class="edit-form">
+      <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="editTopic()">Редактировать</span>
+      <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit"
+            (click)="deleteTopic()">Удалить</span>
+      <span *ngIf="editableTopic && forumDTO.forum.user.id === token.id" class="edit"
+            (click)="saveEditsInTopic(forumDTO.forum.text)"> Сохранить </span>
+    </div>
+  </div>
+
+  <div class="forum-messages">
+    <div class="forum-message" *ngFor="let forumMessageDTO of forumMessagesDTO">
+      <div class="callout">
+        <div class="forum-message-rating">
+          <mat-icon>star</mat-icon>
+        </div>
+        <div class="forum-avatar-message">
+          <img [src]=convertToImage(forumMessageDTO.user.avatar) class="responsive">
+        </div>
+        <div class="forum-user-name-message">{{forumMessageDTO.user.name}}</div>
+        <div class="forum-message-date-creation">{{getDate(forumMessageDTO.messageTime)}}</div>
+      </div>
+      <div [(ngModel)]="forumMessageDTO.message"
+           [disabled]="!editableMessage || !(forumMessageDTO.user.id === token.id)" class="forum-message-body"
+           contenteditable>
+      </div>
+      <div class="edit-form">
+        <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit" (click)="editMessage()">Редактировать</span>
+        <span *ngIf="!editableMessage && forumMessageDTO.user.id === token.id" class="edit"
+              (click)="deleteMessage(forumMessageDTO.id)">Удалить</span>
+        <span *ngIf="editableMessage && forumMessageDTO.user.id === token.id" class="edit"
+              (click)="saveEditsInMessage(forumMessageDTO.id, forumMessageDTO.message)"> Сохранить </span>
+      </div>
+    </div>
+  </div>
+  <div class="new-message">
+    <form [formGroup]="messageFormGroup" (submit)="onSubmit()">
+     <textarea matInput
+               class="form-control-text-area"
+               placeholder="Сообщение"
+               formControlName="message"
+               required
+               [ngClass]="{
+                  'is-invalid': (getMessage?.dirty || getMessage?.touched) && getMessage?.errors,
+                  'is-valid': (getMessage?.dirty || getMessage?.touched) && !getMessage?.errors}"></textarea>
+      <button mat-raised-button
+              color="accent"
+              type="submit">Добавить комментарий
+      </button>
+    </form>
+  </div>
+</div>

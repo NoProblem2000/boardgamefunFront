@@ -1,0 +1,55 @@
+<div *ngIf="diaryDTO.diary?.user" class="diary-container">
+  <div class="game-link" routerLink="/game/{{diaryDTO.diary.game.id}}">
+    <img class="responsive" [src]="convertToImage(diaryDTO.diary.game.picture)">
+    <span class="game-link-header">{{diaryDTO.diary.game.title}}</span>
+  </div>
+  <div class="diary-header">
+    <div class="callout">
+      <div class="diary-rating">{{diaryDTO.rating}}
+        <mat-icon>star</mat-icon>
+      </div>
+      <div class="diary-avatar-creator"><img [src]=convertToImage(diaryDTO.diary.user.avatar) class="responsive"></div>
+      <div class="diary-user-creator">{{diaryDTO.diary.user.name}}</div>
+      <div class="diary-date-creation">{{getDate(diaryDTO.diary.publicationTime)}}</div>
+    </div>
+    <div class="diary-header-body">
+      <h1>{{diaryDTO.diary.title}}</h1>
+      <hr>
+      {{diaryDTO.diary.text}}
+    </div>
+  </div>
+
+  <div class="diary-messages">
+    <div class="diary-message" *ngFor="let diaryMessageDTO of diaryMessages">
+      <div class="callout">
+        <div class="diary-message-rating">
+          <mat-icon>star</mat-icon>
+        </div>
+        <div class="diary-avatar-message">
+          <img [src]=convertToImage(diaryMessageDTO.user.avatar) class="responsive">
+        </div>
+        <div class="diary-user-name-message">{{diaryMessageDTO.user.name}}</div>
+        <div class="diary-message-date-creation">{{getDate(diaryMessageDTO.time)}}</div>
+      </div>
+      <div class="diary-message-body">
+        {{diaryMessageDTO.comment}}
+      </div>
+    </div>
+  </div>
+  <div class="new-message">
+    <form [formGroup]="diaryMessageForm" (submit)="onSubmit()">
+     <textarea matInput
+               class="form-control-text-area"
+               placeholder="Сообщение"
+               formControlName="message"
+               required
+               [ngClass]="{
+                  'is-invalid': (getDiaryMessage?.dirty || getDiaryMessage?.touched) && getDiaryMessage?.errors,
+                  'is-valid': (getDiaryMessage?.dirty || getDiaryMessage?.touched) && !getDiaryMessage?.errors}"></textarea>
+      <button mat-raised-button
+              color="accent"
+              type="submit">Добавить комментарий
+      </button>
+    </form>
+  </div>
+</div>

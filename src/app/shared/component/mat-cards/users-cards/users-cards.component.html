@@ -1,0 +1,16 @@
+<div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
+  <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let userData of users">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" routerLink="/user/{{userData.user.id}}">
+      <img *ngIf="userData.user.avatar; else defaultUserImage" mat-card-lg-image
+           [src]=convertToImage(userData.user.avatar)>
+      <mat-card-content> {{userData.user.name}} <span class="game-rating"
+                                                      *ngIf="userData.user.rating">{{userData.user.rating}}
+        <mat-icon>star</mat-icon></span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #defaultUserImage>
+  <img mat-card-lg-image src="/assets/icons/user.png">
+</ng-template>

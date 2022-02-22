@@ -1,0 +1,10 @@
+<div fxLayout="row wrap" fxLayoutGap="3% grid" fxLayoutGap.xs="10% grid" fxLayoutAlign="left stretch">
+  <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let data of forums">
+    <mat-card fxLayout="column" fxLayoutAlign="center center" routerLink="/forum/{{data.forum.id}}">
+      <img mat-card-lg-image src="/assets/icons/forum.png">
+      <mat-card-content>{{data.forum.title}}<span class="game-rating" *ngIf="data.rating">{{data.rating}}
+        <mat-icon>star</mat-icon></span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink=""><img src="assets/icons/dice.png" class="logo">
+    BoardgameFun
+  </button>
+  <span class="spacer"></span>
+  <app-user-menu></app-user-menu>
+  <mat-form-field appearance="fill" class="game-filter-form-field">
+    <mat-label>Поиск</mat-label>
+    <input type="text"
+           placeholder="Введите название игры"
+           matInput
+           #matInput
+           (keyup)="applyFilter($event)"
+           [matAutocomplete]="autoComplete">
+    <mat-autocomplete #autoComplete="matAutocomplete">
+       <mat-option *ngFor="let game of filteredGames" [value]="game.title" routerLink="/game/{{game.id}}" (click)="matInput.value=''">
+         {{game.title}}
+       </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-toolbar>
+

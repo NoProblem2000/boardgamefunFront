@@ -1,0 +1,39 @@
+<div class="main-page-body">
+  <!--todo: right requests on server-->
+  <div class="main-page-block">
+    <h1>Игры
+      <mat-icon style="cursor: pointer" routerLink="game/edit">add_circle</mat-icon>
+    </h1>
+    <mat-tab-group headerPosition="below" [backgroundColor]="'primary'" [color]="'accent'">
+      <mat-tab label="Новые">
+        <app-games-cards [gamesData]="gamesData"></app-games-cards>
+      </mat-tab>
+      <mat-tab label="Обсуждаемые">
+        WIP
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="main-page-block">
+    <h1>Новости</h1>
+    wip
+  </div>
+
+  <div class="main-page-block">
+    <h1>Дневники</h1>
+    <app-diary-cards [diaries]="diaries"></app-diary-cards>
+  </div>
+
+  <div class="main-page-block">
+    <h1>Самые обсуждаемые форумы</h1>
+    <app-forums-cards [forums]="forums"></app-forums-cards>
+  </div>
+
+  <div class="main-page-block">
+    <h1>Новые пользователи</h1>
+    <app-users-cards [users]="users"></app-users-cards>
+  </div>
+  <ngx-ui-loader [loaderId]="'main-page'"></ngx-ui-loader>
+</div>
+
+

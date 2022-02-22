@@ -1,0 +1,35 @@
+.user-container {
+  height: 100%;
+  padding: 5% 10%;
+}
+
+.responsive{
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.user-header {
+  display: flex;
+  table-layout: fixed;
+  padding: 5%;
+  background: #0d47a1;
+  background: linear-gradient(90deg, #052049 0%, #4b88b9 35%, #e3f2fd 100%);
+}
+
+.user-header-image {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.user-header-body {
+  margin-left: 5%;
+}
+
+.user-header-title-rating{
+  font-size: 18px;
+  font-family: cursive;
+  color: #59e0c8;
+}
+
+

@@ -1,0 +1,18 @@
+.new-topic{
+  position: relative;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+textarea{
+  height: 10vh;
+}

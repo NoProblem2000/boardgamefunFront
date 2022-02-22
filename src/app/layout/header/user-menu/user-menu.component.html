@@ -1,0 +1,19 @@
+<div *ngIf="!authService.isLoggedIn">
+  <button mat-button routerLink="/authentication">Вход</button>
+  <button mat-button routerLink="/registration">Зарегистрироваться</button>
+</div>
+<div *ngIf="authService.isLoggedIn">
+  <ul>
+    <li [ngClass]="{'active': isUserMenuOpen }">
+      <span (click)="toggleUserMenu()">{{name}}</span>
+      <span> <img [src]=convertImage(avatar) style="width: 32px"> </span>
+      <mat-icon style="margin-left: 5px; margin-right: 5px">message</mat-icon>
+    </li>
+    <ul class="dropdown_menu" [@animateMenu]="isUserMenuOpen ? 'open' : 'close'">
+      <li>Профиль</li>
+      <li>Редактирование профиля</li>
+      <li (click)="signOut()">Выход</li>
+    </ul>
+  </ul>
+
+</div>

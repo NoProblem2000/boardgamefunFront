@@ -1,0 +1,25 @@
+.main-page-block{
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+
+.main-page-body{
+  padding-left: 10%;
+  padding-right: 10%;
+  height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-content{
+  overflow: hidden;
+}
+
+:host ::ng-deep .mat-tab-body.mat-tab-body-active{
+  overflow: hidden;
+  margin-bottom: 2%;
+}
+
+

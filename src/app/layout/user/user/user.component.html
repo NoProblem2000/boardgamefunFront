@@ -1,0 +1,57 @@
+<div *ngIf="userDTO.user" class="user-container">
+  <div class="user-header">
+    <div class="user-header-image">
+      <img [src]=convertToImage(userDTO.user.avatar) class="responsive">
+    </div>
+    <div class="user-header-body">
+      <div class="user-header-title-container">
+        <div class="rank-overall">Место в топе: wip</div>
+        <div class="user-header-title">
+          <div class="user-header-title-rating">
+            Рейтинг пользователя {{userDTO.user.rating}}
+          </div>
+          <div class="user-header-name-info">
+            <h1>{{userDTO.user.name}} </h1>
+            Зарегистрирован {{getDate()}}
+          </div>
+          <p>
+            {{userDTO.user.town}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-details">
+    <mat-tab-group [backgroundColor]="'primary'" [color]="'accent'" dynamicHeight>
+      <mat-tab label="Игры в коллекции">
+        <app-games-cards [gamesData]="userGames"></app-games-cards>
+      </mat-tab>
+
+      <mat-tab label="На продажу">
+        <app-games-cards [gamesData]="gamesForSell"></app-games-cards>
+      </mat-tab>
+
+      <mat-tab label="Рейтинг игр">
+        <app-games-rating-list [gamesData]="userRatingList"></app-games-rating-list>
+      </mat-tab>
+
+      <mat-tab label="Форумы">
+        <app-forums-list [forums]="forums"></app-forums-list>
+      </mat-tab>
+
+      <mat-tab label="Дневники">
+        <app-diary-cards [diaries]="diaries"></app-diary-cards>
+      </mat-tab>
+
+      <mat-tab label="Картинки">
+        wip
+      </mat-tab>
+
+      <mat-tab label="Файлы">
+        wip
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>
