@@ -4,6 +4,7 @@ export const api = {
   Gateway: 'http://localhost:8090',
   SignUp: 'sign-up',
   SignIn: 'sign-in',
+  RefreshToken: 'refresh-token',
   Users: 'users',
   Games: 'games',
   AddGame: 'add',

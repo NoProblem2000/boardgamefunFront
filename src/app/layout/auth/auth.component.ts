@@ -55,6 +55,7 @@ export class AuthComponent implements OnInit {
       data => {
         this.loaderService.stopLoader('authentication-page');
         this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveRefreshToken(data.refreshToken);
         this.tokenStorage.saveUser(data);
         this.authService.isLoggedIn = true;
         this.authService.enter.next();

@@ -20,6 +20,13 @@ export class AuthService {
     this.enter = new Subject<void>();
   }
 
+  refreshTokens(userName: string, refreshToken: string | null): Observable<any> {
+    return this.http.post(api.Gateway + '/' + api.Users + '/' + api.RefreshToken, {
+      userName,
+      refreshToken
+    }, httpOptions);
+  }
+
   signIn(name: string, password: string): Observable<any> {
     return this.http.post(api.Gateway + '/' + api.Users + '/' + api.SignIn, {
       name,
