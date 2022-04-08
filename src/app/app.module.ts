@@ -25,7 +25,7 @@ import {ErrorInterceptorProviders} from "./shared/interceptors/error-interceptor
 import {SharedModule} from "./shared/shared.module";
 import {FormsModule} from "@angular/forms";
 
-
+// todo: ngx bootstrap rating
 @NgModule({
   declarations: [
     AppComponent,
