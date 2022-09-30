@@ -3,7 +3,15 @@ import {UserService} from "../../shared/services/user.service";
 import {GameService} from "../../shared/services/game.service";
 import {DiaryService} from "../../shared/services/diary.service";
 import {ForumService} from "../../shared/services/forum.service";
-import {DiaryDTO, ForumDTO, GameDTO, User, UserDTO} from "../../shared/interfaces/rest";
+import {
+  DiaryDataDTO,
+  DiaryDTO,
+  ForumDataDTO,
+  ForumDTO,
+  GameDataDTO,
+  GameDTO,
+  UserDTO
+} from "../../shared/interfaces/rest";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {blobToImage} from "../../shared/functions/shared-func";
@@ -16,9 +24,9 @@ import {blobToImage} from "../../shared/functions/shared-func";
 export class MainPageComponent implements OnInit {
 
   public users: UserDTO[] = [];
-  public gamesData: GameDTO[] = [];
-  public diaries: DiaryDTO[] = [];
-  public forums: ForumDTO[] = [];
+  public gamesData: GameDataDTO[] = [];
+  public diaries: DiaryDataDTO[] = [];
+  public forums: ForumDataDTO[] = [];
 
   constructor(private userService: UserService,
               private gameService: GameService,

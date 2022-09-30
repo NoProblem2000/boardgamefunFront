@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {DiaryDTO} from "../../../interfaces/rest";
+import {DiaryDataDTO} from "../../../interfaces/rest";
 
 @Component({
   selector: 'app-diary-cards',
@@ -8,7 +8,7 @@ import {DiaryDTO} from "../../../interfaces/rest";
 })
 export class DiaryCardsComponent implements OnInit {
 
-  @Input() diaries: DiaryDTO[] = [];
+  @Input() diaries: DiaryDataDTO[] = [];
 
   constructor() { }
 

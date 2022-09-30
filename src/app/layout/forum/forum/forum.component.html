@@ -1,29 +1,29 @@
-<div *ngIf="forumDTO.forum?.user" class="forum-container">
-  <div class="game-link" routerLink="/game/{{forumDTO.forum.game.id}}">
-    <img class="responsive" [src]="convertToImage(forumDTO.forum.game.picture)">
-    <span class="game-link-header">{{forumDTO.forum.game.title}}</span>
+<div *ngIf="forumDataDTO?.forum.user" class="forum-container">
+  <div class="game-link" routerLink="/game/{{forumDataDTO.forum.game.id}}">
+    <img class="responsive" [src]="convertToImage(forumDataDTO.forum.game.picture)">
+    <span class="game-link-header">{{forumDataDTO.forum.game.title}}</span>
   </div>
   <div class="forum-header">
     <div class="callout">
-      <div class="forum-rating">{{forumDTO.rating}}
+      <div class="forum-rating">{{forumDataDTO.rating}}
         <mat-icon>star</mat-icon>
       </div>
-      <div class="forum-avatar-creator"><img [src]=convertToImage(forumDTO.forum.user.avatar) class="responsive"></div>
-      <div class="forum-user-creator">{{forumDTO.forum.user.name}}</div>
-      <div class="forum-date-creation">{{getDate(forumDTO.forum.publicationTime)}}</div>
+      <div class="forum-avatar-creator"><img [src]=convertToImage(forumDataDTO.forum.user.avatar) class="responsive"></div>
+      <div class="forum-user-creator">{{forumDataDTO.forum.user.name}}</div>
+      <div class="forum-date-creation">{{getDate(forumDataDTO.forum.publicationTime)}}</div>
     </div>
     <div class="forum-header-body">
-      <h1>{{forumDTO.forum.title}}</h1>
+      <h1>{{forumDataDTO.forum.title}}</h1>
       <hr>
-      <div [(ngModel)]="forumDTO.forum.text" [disabled]="!editableTopic || !(forumDTO.forum.user.id === token.id)"
+      <div [(ngModel)]="forumDataDTO.forum.text" [disabled]="!editableTopic || !(forumDataDTO.forum.user.id === token.id)"
            contenteditable></div>
     </div>
     <div class="edit-form">
-      <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit" (click)="editTopic()">Редактировать</span>
-      <span *ngIf="!editableTopic && forumDTO.forum.user.id === token.id" class="edit"
+      <span *ngIf="!editableTopic && forumDataDTO.forum.user.id === token.id" class="edit" (click)="editTopic()">Редактировать</span>
+      <span *ngIf="!editableTopic && forumDataDTO.forum.user.id === token.id" class="edit"
             (click)="deleteTopic()">Удалить</span>
-      <span *ngIf="editableTopic && forumDTO.forum.user.id === token.id" class="edit"
-            (click)="saveEditsInTopic(forumDTO.forum.text)"> Сохранить </span>
+      <span *ngIf="editableTopic && forumDataDTO.forum.user.id === token.id" class="edit"
+            (click)="saveEditsInTopic(forumDataDTO.forum.text)"> Сохранить </span>
     </div>
   </div>
 

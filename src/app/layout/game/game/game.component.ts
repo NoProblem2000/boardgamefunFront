@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../../shared/services/game.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {DiaryDTO, ForumDTO, GameDTO} from "../../../shared/interfaces/rest";
+import {DiaryDataDTO, DiaryDTO, ForumDataDTO, ForumDTO, GameDataDTO, GameDTO} from "../../../shared/interfaces/rest";
 import {blobToImage} from "../../../shared/functions/shared-func";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {ForumService} from "../../../shared/services/forum.service";
@@ -17,11 +17,11 @@ import {NotifierService} from "angular-notifier";
 })
 export class GameComponent implements OnInit {
 
-  public gameData: GameDTO;
-  public expansionsGames: GameDTO[] = [];
-  public similarGames: GameDTO[] = [];
-  public forums: ForumDTO[] = [];
-  public diaries: DiaryDTO[] = [];
+  public gameDataDTO: GameDataDTO;
+  public expansionsGames: GameDataDTO[] = [];
+  public similarGames: GameDataDTO[] = [];
+  public forums: ForumDataDTO[] = [];
+  public diaries: DiaryDataDTO[] = [];
 
   gameId: number = 0;
 
@@ -35,7 +35,7 @@ export class GameComponent implements OnInit {
               private notifier: NotifierService,) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
-    this.gameData = {} as GameDTO;
+    this.gameDataDTO = {} as GameDataDTO;
   }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class GameComponent implements OnInit {
     this.loaderService.startLoader('app-body');
     this.initData().subscribe(([Game, Forums, SimilarGames, Expansions, Diaries]) => {
         this.loaderService.stopLoader('app-body');
-        this.gameData = Game;
+        this.gameDataDTO = Game;
         this.forums = Forums;
         this.similarGames = SimilarGames;
         this.expansionsGames = Expansions;
@@ -55,8 +55,8 @@ export class GameComponent implements OnInit {
       });
   }
 
-  getYear(): number{
-    const d = this.gameData.game.yearOfRelease;
+  getYear(): number {
+    const d = this.gameDataDTO.game.yearOfRelease;
     const date = new Date(d);
     return date.getFullYear();
   }
@@ -74,7 +74,7 @@ export class GameComponent implements OnInit {
     return blobToImage(blob);
   }
 
-  createNewTopic(gameId: number): void{
+  createNewTopic(gameId: number): void {
     if (!this.authService.isLoggedIn) {
       this.notifier.notify("error", "Для добавления темы вам необходимо быть авторизованным")
       return;
@@ -82,7 +82,7 @@ export class GameComponent implements OnInit {
     this.router.navigateByUrl("/forum/create-topic/" + gameId);
   }
 
-  createDiary(gameId: number): void{
+  createDiary(gameId: number): void {
     if (!this.authService.isLoggedIn) {
       this.notifier.notify("error", "Для добавления дневника вам необходимо быть авторизованным")
       return;

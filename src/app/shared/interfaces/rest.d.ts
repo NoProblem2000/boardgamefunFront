@@ -1,3 +1,4 @@
+
 export interface DesignerDTO {
   id: number;
   designer: string;
@@ -7,21 +8,44 @@ export interface DiaryCommentDTO {
   id: number;
   comment: string;
   time: Date;
-  user: User;
+  user: UserDTO;
 }
 
-export interface DiaryDTO {
-  diary: Diary;
-  rating: number;
+export interface DiaryDTO extends Serializable {
+  id: number;
+  title: string;
+  text: string;
+  publicationTime: Date;
+  game: GameDTO;
+  user: UserDTO;
 }
 
-export interface DiaryRatingDTO {
+export interface DiaryDataDTO {
+  diary: DiaryDTO;
+  rating: number | null;
+}
+
+export interface DiaryRatingDTO extends Serializable {
   id: number;
   rating: number;
 }
 
-export interface ForumDTO {
-  forum: Forum;
+export interface FilterGamesDTO {
+  id: number;
+  title: string;
+}
+
+export interface ForumDTO extends Serializable {
+  id: number;
+  title: string;
+  text: string;
+  publicationTime: Date;
+  game: GameDTO;
+  user: UserDTO;
+}
+
+export interface ForumDataDTO {
+  forum: ForumDTO;
   rating: number;
 }
 
@@ -29,50 +53,10 @@ export interface ForumMessageDTO {
   id: number;
   message: string;
   messageTime: Date;
-  user: User;
+  user: UserDTO;
 }
 
-export interface GameDTO {
-  game: Game;
-  rating: number;
-  designers: string[];
-}
-
-export interface GameSellDTO {
-  game: Game;
-  condition: string;
-  comment: string;
-  price: number;
-}
-
-export interface UserDTO {
-  user: User;
-}
-
-export interface UsersGameRatingDTO {
-  user: User;
-  rating: number;
-}
-
-export interface Diary {
-  id: number;
-  title: string;
-  text: string;
-  publicationTime: Date;
-  game: Game;
-  user: User;
-}
-
-export interface Forum {
-  id: number;
-  title: string;
-  text: string;
-  publicationTime: Date;
-  game: Game;
-  user: User;
-}
-
-export interface Game {
+export interface GameDTO extends Serializable {
   id: number;
   title: string;
   yearOfRelease: Date;
@@ -86,7 +70,25 @@ export interface Game {
   timeToPlayMax: number;
 }
 
-export interface User {
+export interface GameDataDTO {
+  game: GameDTO;
+  rating: number;
+  designers: string[];
+}
+
+export interface GameSellDTO {
+  game: GameDTO;
+  condition: string;
+  comment: string;
+  price: number;
+}
+
+export interface RatingGameByUserDTO extends Serializable {
+  id: number;
+  rating: number;
+}
+
+export interface UserDTO extends Serializable {
   id: number;
   name: string;
   password: string;
@@ -98,7 +100,5 @@ export interface User {
   registrationDate: Date;
 }
 
-export interface FilterGamesDTO{
-  id: number;
-  title: string
+export interface Serializable {
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ForumDTO} from "../../../interfaces/rest";
+import {ForumDataDTO, ForumDTO} from "../../../interfaces/rest";
 
 @Component({
   selector: 'app-forums-list',
@@ -8,15 +8,15 @@ import {ForumDTO} from "../../../interfaces/rest";
 })
 export class ForumsListComponent implements OnInit {
 
-  @Input() forums: ForumDTO[] = [];
+  @Input() forums: ForumDataDTO[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getTimePublication(forumData: ForumDTO){
-    const d = forumData.forum.publicationTime;
+  getTimePublication(forumDTO: ForumDTO){
+    const d = forumDTO.publicationTime;
     const date = new Date(d);
     return date.toLocaleDateString();
   }

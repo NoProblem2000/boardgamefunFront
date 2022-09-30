@@ -1,21 +1,21 @@
-<div *ngIf="userDTO.user" class="user-container">
+<div *ngIf="userDTO" class="user-container">
   <div class="user-header">
     <div class="user-header-image">
-      <img [src]=convertToImage(userDTO.user.avatar) class="responsive">
+      <img [src]=convertToImage(userDTO.avatar) class="responsive">
     </div>
     <div class="user-header-body">
       <div class="user-header-title-container">
         <div class="rank-overall">Место в топе: wip</div>
         <div class="user-header-title">
           <div class="user-header-title-rating">
-            Рейтинг пользователя {{userDTO.user.rating}}
+            Рейтинг пользователя {{userDTO.rating}}
           </div>
           <div class="user-header-name-info">
-            <h1>{{userDTO.user.name}} </h1>
+            <h1>{{userDTO.name}} </h1>
             Зарегистрирован {{getDate()}}
           </div>
           <p>
-            {{userDTO.user.town}}
+            {{userDTO.town}}
           </p>
         </div>
       </div>

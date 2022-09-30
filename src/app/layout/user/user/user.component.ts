@@ -1,10 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../../shared/services/user.service";
 import {ForumService} from "../../../shared/services/forum.service";
 import {DiaryService} from "../../../shared/services/diary.service";
 import {NgxUiLoaderService} from "ngx-ui-loader";
-import {DiaryDTO, ForumDTO, GameDTO, UserDTO} from "../../../shared/interfaces/rest";
+import {
+  DiaryDataDTO,
+  DiaryDTO,
+  ForumDataDTO,
+  ForumDTO,
+  GameDataDTO,
+  GameDTO,
+  UserDTO
+} from "../../../shared/interfaces/rest";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {blobToImage} from "../../../shared/functions/shared-func";
 
@@ -17,11 +25,11 @@ export class UserComponent implements OnInit {
 
   userId: number;
   userDTO: UserDTO;
-  forums: ForumDTO[] = [];
-  diaries: DiaryDTO[] = [];
-  userRatingList: GameDTO[] = [];
-  userGames: GameDTO[] = [];
-  gamesForSell: GameDTO[] = [];
+  forums: ForumDataDTO[] = [];
+  diaries: DiaryDataDTO[] = [];
+  userRatingList: GameDataDTO[] = [];
+  userGames: GameDataDTO[] = [];
+  gamesForSell: GameDataDTO[] = [];
 
 
   constructor(private route: ActivatedRoute,
@@ -61,13 +69,13 @@ export class UserComponent implements OnInit {
     ])
   }
 
-  getDate(): string{
-    const d = this.userDTO.user.registrationDate;
+  getDate(): string {
+    const d = this.userDTO.registrationDate;
     const date = new Date(d);
     return date.toLocaleDateString();
   }
 
-  public convertToImage(blob: any){
+  public convertToImage(blob: any) {
     return blobToImage(blob);
   }
 

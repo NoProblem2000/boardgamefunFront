@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {blobToImage} from "../../../functions/shared-func";
-import {GameDTO} from "../../../interfaces/rest";
+import {GameDataDTO, GameDTO} from "../../../interfaces/rest";
 
 @Component({
   selector: 'app-games-cards',
@@ -9,7 +9,7 @@ import {GameDTO} from "../../../interfaces/rest";
 })
 export class GamesCardsComponent implements OnInit {
 
-  @Input() gamesData: GameDTO[] = [];
+  @Input() gamesData: GameDataDTO[] = [];
 
   constructor() { }
 

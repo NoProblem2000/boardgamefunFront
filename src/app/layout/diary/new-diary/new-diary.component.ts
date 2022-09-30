@@ -52,8 +52,8 @@ export class NewDiaryComponent implements OnInit {
 
   createNewTopic() {
     const token = this.tokenStorage.getUser();
-    this.userService.createDiary(token.id, this.gameId, this.title, this.text).subscribe(res => {
-      this.router.navigateByUrl("/diary/" + res.diary.id);
+    this.userService.createDiary(token.id, this.gameId, this.title, this.text).subscribe(diary => {
+      this.router.navigateByUrl("/diary/" + diary.id);
     });
   }
 }

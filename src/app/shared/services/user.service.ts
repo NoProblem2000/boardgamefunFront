@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpGlobalService} from "./http-global.service";
 import {Observable} from "rxjs";
-import {DiaryDTO, User, UserDTO} from "../interfaces/rest";
+import {DiaryDTO, UserDTO} from "../interfaces/rest";
 import {api} from "../constants/api";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private httpService: HttpGlobalService) { }
 
-  public getUsers(): Observable<User[]>{
+  public getUsers(): Observable<UserDTO[]>{
     const url = `${api.Users}`;
     return this.httpService.get(url);
   }

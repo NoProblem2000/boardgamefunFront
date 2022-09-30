@@ -50,8 +50,8 @@ export class NewForumTopicComponent implements OnInit {
 
   createNewTopic() {
     const token = this.tokenStorage.getUser();
-    this.forumService.addForum(token.id, this.gameId, this.title, this.text).subscribe(res => {
-      this.router.navigateByUrl("/forum/" + res.forum.id);
+    this.forumService.addForum(token.id, this.gameId, this.title, this.text).subscribe(forum => {
+      this.router.navigateByUrl("/forum/" + forum.id);
     });
   }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DiaryCommentDTO, DiaryDTO} from "../../../shared/interfaces/rest";
+import {DiaryCommentDTO, DiaryDataDTO, DiaryDTO} from "../../../shared/interfaces/rest";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgxUiLoaderService} from "ngx-ui-loader";
 import {DiaryService} from "../../../shared/services/diary.service";
@@ -20,7 +20,7 @@ export class DiaryComponent implements OnInit {
   diaryMessageForm!: FormGroup;
   diaryMessage!: string;
   diaryMessages: DiaryCommentDTO[] = []
-  diaryDTO: DiaryDTO;
+  diaryDataDTO: DiaryDataDTO;
   diaryId: number;
 
   constructor(private route: ActivatedRoute,
@@ -30,7 +30,7 @@ export class DiaryComponent implements OnInit {
               private router: Router,
               public authService: AuthService,
               private notifier: NotifierService) {
-    this.diaryDTO = {} as DiaryDTO;
+    this.diaryDataDTO = {} as DiaryDataDTO;
     this.diaryId = Number(this.route.snapshot.paramMap.get('id'));
     this.diaryMessageForm = new FormGroup({
       message: new FormControl(this.diaryMessage, [Validators.required])
@@ -40,7 +40,7 @@ export class DiaryComponent implements OnInit {
   ngOnInit(): void {
     this.loaderService.startLoader('app-body');
     this.initData().subscribe(([Diary, DiaryComments]) => {
-      this.diaryDTO = Diary;
+      this.diaryDataDTO = Diary;
       this.diaryMessages = DiaryComments;
       this.loaderService.stopLoader('app-body');
     });

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GameDTO} from "../../../interfaces/rest";
+import {GameDataDTO, GameDTO} from "../../../interfaces/rest";
 
 @Component({
   selector: 'app-games-rating-list',
@@ -8,7 +8,7 @@ import {GameDTO} from "../../../interfaces/rest";
 })
 export class GamesRatingListComponent implements OnInit {
 
-  @Input() gamesData: GameDTO[] = [];
+  @Input() gamesData: GameDataDTO[] = [];
 
   constructor() { }
 

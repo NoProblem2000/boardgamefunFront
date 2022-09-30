@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ForumDTO} from "../../../interfaces/rest";
+import {ForumDataDTO, ForumDTO} from "../../../interfaces/rest";
 
 @Component({
   selector: 'app-forums-cards',
@@ -8,9 +8,10 @@ import {ForumDTO} from "../../../interfaces/rest";
 })
 export class ForumsCardsComponent implements OnInit {
 
-  @Input() forums: ForumDTO[] = [];
+  @Input() forums: ForumDataDTO[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

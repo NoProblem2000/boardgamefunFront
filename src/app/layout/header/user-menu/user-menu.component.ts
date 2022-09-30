@@ -37,8 +37,8 @@ export class UserMenuComponent implements OnInit {
     this.name = tokenStorage.getUser().userName;
     this.authService.enter.subscribe(() => {
       if (tokenStorage.getUser()?.id)
-        this.userService.getUser(tokenStorage.getUser().id).subscribe(res => {
-          this.avatar = res.user.avatar;
+        this.userService.getUser(tokenStorage.getUser().id).subscribe(user => {
+          this.avatar = user.avatar;
         })
     })
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ForumService} from "../../../shared/services/forum.service";
-import {ForumDTO, ForumMessageDTO} from "../../../shared/interfaces/rest";
+import {ForumDataDTO, ForumDTO, ForumMessageDTO} from "../../../shared/interfaces/rest";
 import {ActivatedRoute, Router} from "@angular/router";
 import {catchError, forkJoin, Observable, of} from "rxjs";
 import {NgxUiLoaderService} from "ngx-ui-loader";
@@ -19,7 +19,7 @@ export class ForumComponent implements OnInit {
 
   messageFormGroup!: FormGroup;
   private message!: string;
-  public forumDTO: ForumDTO;
+  public forumDataDTO: ForumDataDTO;
   private forumId: number;
   public forumMessagesDTO: ForumMessageDTO[] = [];
   public editableMessage = false;
@@ -37,7 +37,7 @@ export class ForumComponent implements OnInit {
               private tokenStorage: TokenStorageService,
               private router: Router) {
 
-    this.forumDTO = {} as ForumDTO;
+    this.forumDataDTO = {} as ForumDataDTO;
     this.forumId = Number(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -48,7 +48,7 @@ export class ForumComponent implements OnInit {
     });
     this.loaderService.startLoader('app-body');
     this.initData().subscribe(([Forum, ForumMessagesDTO]) => {
-        this.forumDTO = Forum;
+        this.forumDataDTO = Forum;
         this.forumMessagesDTO = ForumMessagesDTO;
         this.loaderService.stopLoader('app-body');
       }
